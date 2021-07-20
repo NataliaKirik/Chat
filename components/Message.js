@@ -1,40 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
-
-const Screen = Dimensions.get("window");
-const AVATAR_SIZE = Screen.width * 0.2;
 
 
 export const Message = ({ date, like, name, photo, replies, title }) => {
+  const [availableDeviceWidth, setAvailableDeviceWidth] = useState(Dimensions.get("window").width);
+  const [availableDeviceHeight, setAvailableDeviceHeight] = useState(Dimensions.get("window").height);
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setAvailableDeviceWidth(Dimensions.get("window").width);
+      setAvailableDeviceHeight(Dimensions.get("window").height);
+    };
+
+    Dimensions.addEventListener("change", updateLayout);
+    return () => {
+      Dimensions.removeEventListener("change", updateLayout);
+    };
+  });
 
   return (
     <View style={styles.row}>
-      <View>
-        <Image source={photo} style={styles.avatar} />
-      </View>
 
       <View>
-        <View style={styles.header}>
-          <Text style={styles.name}>{name}</Text>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title} numberOfLines={2}
-                  ellipsizeMode="tail">{title}
-            </Text>
-          </View>
-        </View>
-        <Text style={styles.replies}>{`${replies} Replies`}</Text>
-        <Text style={styles.textDate}>
+        <Image source={photo} style={{
+          ...styles.avatar,
+          ...{
+            width: availableDeviceWidth * 0.24,
+            height: availableDeviceWidth * 0.24,
+            borderRadius: (availableDeviceWidth * 0.24) / 2,
+          },
+        }} />
+      </View>
+
+      <View style={{ ...styles.mainTitleContainer, width: availableDeviceWidth / 2 }}>
+
+        <Text style={{
+          ...styles.name,
+          fontSize: availableDeviceWidth < 400 ? 18 : 28,
+        }}>{name}</Text>
+        <Text style={{ ...styles.title, fontSize: availableDeviceWidth < 400 ? 15 : 25 }}
+              numberOfLines={2}
+              ellipsizeMode="tail">{title}
+        </Text>
+        <Text
+          style={{ ...styles.replies, fontSize: availableDeviceWidth < 400 ? 14 : 24 }}>
+          {`${replies} Replies`}
+        </Text>
+
+      </View>
+
+      <View style={styles.heartAndDateContainer}>
+        {
+          like ?
+            (<Image
+              style={{ ...styles.heartFilled, width: availableDeviceWidth * 0.06, height: availableDeviceWidth * 0.05 }}
+              resizeMode={"contain"}
+              source={require("../assets/SeekPng.com_heart-png-transparent_155396.png")} />)
+            :
+            (<Image
+              style={{ ...styles.heart, width: availableDeviceWidth * 0.05, height: availableDeviceWidth * 0.05 }}
+              resizeMode={"stretch"}
+              source={require("../assets/unnamed.png")} />)
+        }
+        <Text style={{ ...styles.textDate, fontSize: availableDeviceWidth < 400 ? 14 : 24 }}>
           {date.slice(0, 10)}
         </Text>
-        {like ?
-          (<Image style={styles.heartFilled}
-                  resizeMode={"contain"}
-                  source={require("../assets/SeekPng.com_heart-png-transparent_155396.png")} />)
-          :
-          (<Image style={styles.heart} resizeMode={"contain"} source={require("../assets/unnamed.png")} />)
-        }
       </View>
-
 
     </View>
   );
@@ -42,43 +73,41 @@ export const Message = ({ date, like, name, photo, replies, title }) => {
 
 const styles = StyleSheet.create({
   row: {
-    borderWidth: 1,
     backgroundColor: "white",
-    marginVertical: 10,
+    marginVertical: 7,
     flexDirection: "row",
     padding: 10,
+    justifyContent: "space-around",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.26,
+    elevation: 5,
+    borderRadius: 10,
   },
   avatar: {
-    width: AVATAR_SIZE,
-    height: AVATAR_SIZE,
-    borderRadius: AVATAR_SIZE / 2,
     marginRight: 10,
     borderWidth: 1,
   },
+  mainTitleContainer: {
+
+    justifyContent: "space-between",
+  },
   name: {
     fontWeight: "bold",
-    fontSize: 18,
     color: "#222222",
   },
-  titleContainer: {
-    width: "90%",
-    justifyContent: "center",
-  },
   title: {
-    width: "67%",
     paddingRight: 5,
-    fontSize: 15,
     color: "#4f5153",
     textAlign: "left",
   },
   replies: {
     fontWeight: "bold",
-    fontSize: 14,
     color: "#222222",
+    marginVertical: 5,
   },
   heart: {
-    width: 20,
-    height: 20,
     tintColor: "#6e7f8d",
   },
   heartFilled: {
@@ -88,7 +117,12 @@ const styles = StyleSheet.create({
   },
   textDate: {
     color: "#6e7f8d",
-    fontSize: 14,
+
+  },
+  heartAndDateContainer: {
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    marginVertical: 5,
   },
 
 });

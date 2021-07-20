@@ -321,8 +321,8 @@ const App = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    paddingVertical: "5%",
-    paddingHorizontal: "5%",
+    paddingVertical: "3%",
+    paddingHorizontal: "3%",
     backgroundColor: "#cdcdd7",
   },
 
