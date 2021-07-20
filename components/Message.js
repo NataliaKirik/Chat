@@ -20,7 +20,6 @@ export const Message = ({ date, like, name, photo, replies, title }) => {
 
   return (
     <View style={styles.row}>
-
       <View>
         <Image source={photo} style={{
           ...styles.avatar,
@@ -124,5 +123,4 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     marginVertical: 5,
   },
-
 });

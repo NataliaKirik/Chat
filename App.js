@@ -1,13 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View, SafeAreaView } from "react-native";
 import { Message } from "./components/Message";
 
 const App = () => {
@@ -306,14 +298,14 @@ const App = () => {
   // const dataNew = data.map(obj => ({ ...obj, photoLink: require(`./avatars/${obj.photo}`) }));
 
   return (
-    <View style={styles.screen}>
+    <SafeAreaView style={styles.screen}>
       <FlatList
         data={data}
         renderItem={({ item }) => (
           <Message {...item} />)}
         keyExtractor={(item) => item._id}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
