@@ -1,126 +1,86 @@
-import React, { useEffect, useState } from "react";
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import styled from "styled-components";
 
+
+const MessageContainer = styled.View`
+  background-color: white;
+  margin: 7px;
+  flex-direction: row;
+  justify-content: space-around;
+  border-radius: 10px;
+`;
+
+const Avatar = styled.Image`
+  border: 1px solid black;
+`;
+const MainContainer = styled.View`
+  justify-content: space-between;
+  width: 50%;
+  padding: 0 0 0 5px;
+`;
+const MessageTitle = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+  color: #222222;
+`;
+const UserName = styled.Text`
+  font-size: 15px;
+  color: #4f5153;
+  text-align: left;
+`;
+const MessageReplies = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  color: #222222;
+`;
+const ImageHeart = styled.Image`
+  width: 20px;
+  height: 20px;
+  color: ${props => props.color};`;
+const Date = styled.Text`
+  color: #6e7f8d;
+  font-size: 14px;
+`;
 
 export const Message = ({ date, like, name, photo, replies, title }) => {
-  const [availableDeviceWidth, setAvailableDeviceWidth] = useState(Dimensions.get("window").width);
-  const [availableDeviceHeight, setAvailableDeviceHeight] = useState(Dimensions.get("window").height);
-
-  useEffect(() => {
-    const updateLayout = () => {
-      setAvailableDeviceWidth(Dimensions.get("window").width);
-      setAvailableDeviceHeight(Dimensions.get("window").height);
-    };
-
-    Dimensions.addEventListener("change", updateLayout);
-    return () => {
-      Dimensions.removeEventListener("change", updateLayout);
-    };
-  });
-
   return (
-    <View style={{ ...styles.row, padding: availableDeviceWidth < 400 ? 10 : 30 }}>
-      <View>
-        <Image source={photo} style={{
-          ...styles.avatar,
-          ...{
-            width: availableDeviceWidth * 0.24,
-            height: availableDeviceWidth * 0.24,
-            borderRadius: (availableDeviceWidth * 0.24) / 2,
-            marginRight: availableDeviceWidth * 0.07,
-          },
-        }} />
-      </View>
+    <MessageContainer>
 
-      <View style={{ ...styles.mainTitleContainer, width: availableDeviceWidth / 2 }}>
+      <Avatar source={photo} />
 
-        <Text numberOfLines={1}
-              ellipsizeMode="tail"
-              style={{
-                ...styles.title,
-                fontSize: availableDeviceWidth < 400 ? 18 : 28,
-              }}>{title}</Text>
-        <Text style={{ ...styles.name, fontSize: availableDeviceWidth < 400 ? 15 : 25 }}
-        >{name}
-        </Text>
-        <Text
-          style={{ ...styles.replies, fontSize: availableDeviceWidth < 400 ? 14 : 24 }}>
-          {`${replies} Replies`}
-        </Text>
-
-      </View>
+      <MainContainer>
+        <MessageTitle numberOfLines={1}
+                      ellipsizeMode="tail">{title}</MessageTitle>
+        <UserName>{name}</UserName>
+        <MessageReplies>{`${replies} Replies`}</MessageReplies>
+      </MainContainer>
 
       <View style={styles.heartAndDateContainer}>
-        {
-          like ?
-            (<Image
-              style={{
-                ...styles.heartFilled,
-                width: availableDeviceWidth * 0.06,
-                height: availableDeviceWidth * 0.05,
-              }}
-              resizeMode={"contain"}
-              source={require("../assets/SeekPng.com_heart-png-transparent_155396.png")} />)
-            :
-            (<Image
-              style={{
-                ...styles.heart,
-                width: availableDeviceWidth * 0.05,
-                height: availableDeviceWidth * 0.05,
-              }}
-              resizeMode={"stretch"}
-              source={require("../assets/unnamed.png")} />)
+        {like ?
+          (<ImageHeart
+            color={"#df245e"}
+            resizeMode={"contain"}
+            source={require("../assets/SeekPng.com_heart-png-transparent_155396.png")} />)
+          :
+          (<ImageHeart
+            color={"#6e7f8d"}
+            resizeMode={"stretch"}
+            source={require("../assets/unnamed.png")} />)
         }
-        <Text style={{ ...styles.textDate, fontSize: availableDeviceWidth < 400 ? 14 : 24 }}>
+        <Date>
           {date.slice(0, 10)}
-        </Text>
+        </Date>
       </View>
 
-    </View>
+    </MessageContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  row: {
-    backgroundColor: "white",
-    marginVertical: 7,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    shadowOpacity: 0.26,
-    elevation: 5,
-    borderRadius: 10,
-  },
-  avatar: {},
-  mainTitleContainer: {
-    justifyContent: "space-between",
-  },
-  title: {
-    fontWeight: "bold",
-    color: "#222222",
-  },
-  name: {
-    color: "#4f5153",
-    textAlign: "left",
-  },
-  replies: {
-    fontWeight: "bold",
-    color: "#222222",
-  },
-  heart: {
-    tintColor: "#6e7f8d",
-  },
-  heartFilled: {
-    tintColor: "#df245e",
-  },
-  textDate: {
-    color: "#6e7f8d",
-
-  },
   heartAndDateContainer: {
     justifyContent: "space-between",
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
 });
+

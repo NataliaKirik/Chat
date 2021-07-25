@@ -1,6 +1,7 @@
 import React from "react";
-import { FlatList, StyleSheet, View, SafeAreaView } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet } from "react-native";
 import { Message } from "./components/Message";
+import DropShadow from "react-native-drop-shadow";
 
 const App = () => {
   const [data, setData] = React.useState([
@@ -301,9 +302,23 @@ const App = () => {
     <SafeAreaView style={styles.screen}>
       <FlatList
         data={data}
-        renderItem={({ item }) => (
-          <Message {...item} />)}
-        keyExtractor={(item) => item._id}
+        renderItem={({ item, index }) => (
+          <DropShadow
+            style={{
+              shadowColor: "#000",
+              shadowOffset: {
+                width: 0,
+                height: 0,
+              },
+              shadowOpacity: 1,
+              shadowRadius: 3,
+            }}
+          >
+            <Message {...item} />
+          </DropShadow>
+        )}
+        keyExtractor={(item, index) => "List-" + index}
+        CellRendererComponent={DropShadow}
       />
     </SafeAreaView>
   );
