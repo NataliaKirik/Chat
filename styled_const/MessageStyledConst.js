@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MessageContainer = styled.View`
   background-color: white;
-  margin: 7px;
+  margin: 7px 11px;
   flex-direction: row;
   justify-content: space-around;
   border-radius: 10px;
