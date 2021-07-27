@@ -1,18 +1,26 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import {
   Avatar,
   Date,
   ImageHeart,
+  LikeAndDateContainer,
   MainContainer,
   MessageContainer,
   MessageReplies,
   MessageTitle,
-  UserName,
+  UserName
 } from "./MessageStyledConst";
 
+type MessagePropsType = {
+  date: string
+  like: string
+  name: string
+  photo: {}
+  replies: string
+  title: string
+}
 
-export const Message = ({ date, like, name, photo, replies, title }) => {
+export const Message = ({ date, like, name, photo, replies, title }: MessagePropsType) => {
   return (
     <MessageContainer>
       <Avatar source={photo} />
@@ -23,7 +31,7 @@ export const Message = ({ date, like, name, photo, replies, title }) => {
         <MessageReplies>{`${replies} Replies`}</MessageReplies>
       </MainContainer>
 
-      <View style={styles.heartAndDateContainer}>
+      <LikeAndDateContainer>
         {like ?
           (<ImageHeart
             color={"#df245e"}
@@ -38,16 +46,9 @@ export const Message = ({ date, like, name, photo, replies, title }) => {
         <Date>
           {date.slice(0, 10)}
         </Date>
-      </View>
-
+      </LikeAndDateContainer>
     </MessageContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  heartAndDateContainer: {
-    justifyContent: "space-between",
-    alignItems: "flex-end",
-  },
-});
 

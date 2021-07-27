@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 
 export const MessageContainer = styled.View`
   background-color: white;
@@ -8,6 +8,11 @@ export const MessageContainer = styled.View`
   border-radius: 10px;
   padding: 7px 11px;
 `;
+//shadow-opacity: 0.75;
+//shadow-radius: 5px;
+//shadow-color: black;
+//shadow-offset: 0px 0px;
+
 export const Avatar = styled.Image`
   width: 120px;
   height: 120px;
@@ -33,7 +38,7 @@ export const MessageReplies = styled.Text`
   font-weight: bold;
   color: #222222;
 `;
-export const ImageHeart = styled.Image`
+export const ImageHeart = styled.Image<{ color: string }>`
   width: 25px;
   height: 25px;
   color: ${props => props.color};
@@ -41,4 +46,8 @@ export const ImageHeart = styled.Image`
 export const Date = styled.Text`
   color: #6e7f8d;
   font-size: 16px;
+`;
+export const LikeAndDateContainer = styled.View`
+  justify-content: space-between;
+  align-items: flex-end
 `;
