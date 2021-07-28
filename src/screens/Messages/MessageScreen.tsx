@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { FlatList, SafeAreaView } from "react-native";
 import DropShadow from "react-native-drop-shadow";
-import { Message } from "../components/Message/Message";
-import { DATA } from "../users-list";
+import { Message } from "../../components/Message/Message";
+import { DATA } from "../../users-list";
 
 
 export const MessageScreen: FC = () => {
