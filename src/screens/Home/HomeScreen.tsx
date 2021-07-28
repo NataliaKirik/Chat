@@ -6,7 +6,7 @@ import {useNavigation} from "@react-navigation/native";
 
 export const HomeScreen: FC = () => {
     const navigation = useNavigation();
-    
+
     return (
         <HomeScreenContainer>
             <ButtonsContainer>
@@ -15,8 +15,8 @@ export const HomeScreen: FC = () => {
                     onPress={() => navigation.navigate('Friends')}
                 />
                 <Button
-                    title="Feed"
-                    onPress={() => navigation.navigate('Feed')}
+                    title="FeedBack Form"
+                    onPress={() => navigation.navigate('FeedBack Form')}
                 />
             </ButtonsContainer>
         </HomeScreenContainer>
