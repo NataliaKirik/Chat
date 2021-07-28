@@ -5,7 +5,7 @@ import {Message} from "../../components/Message/Message";
 import {DATA} from "../../users-list";
 
 
-export const MessageScreen: FC = ({navigation}: any) => {
+export const MessageScreen: FC = () => {
 
     return (
         <SafeAreaView>
@@ -23,7 +23,7 @@ export const MessageScreen: FC = ({navigation}: any) => {
                             shadowRadius: 3
                         }}
                     >
-                        <Message {...item} navigation={navigation}/>
+                        <Message {...item}/>
                     </DropShadow>
                 )}
                 keyExtractor={(_, index) => "List-" + index}

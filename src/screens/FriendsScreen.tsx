@@ -1,9 +1,12 @@
 import React, {FC} from "react";
 import {Button} from "react-native";
 import styled from 'styled-components/native'
+import {useNavigation} from "@react-navigation/native";
 
 
-export const FriendScreen: FC = ({navigation}: any) => {
+export const FriendScreen: FC = () => {
+    const navigation = useNavigation();
+
     return (
         <FriendScreenContainer>
             <Button

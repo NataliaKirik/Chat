@@ -1,9 +1,12 @@
 import React, {FC} from "react";
 import {Button} from "react-native";
 import styled from 'styled-components/native'
+import {useNavigation} from "@react-navigation/native";
 
 
-export const HomeScreen: FC = ({navigation}: any) => {
+export const HomeScreen: FC = () => {
+    const navigation = useNavigation();
+    
     return (
         <HomeScreenContainer>
             <ButtonsContainer>

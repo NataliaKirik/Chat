@@ -11,6 +11,7 @@ import {
     UserName
 } from "./MessageStyledConst";
 import {TouchableOpacity} from "react-native";
+import {useNavigation} from "@react-navigation/native";
 
 type MessagePropsType = {
     date: string
@@ -19,10 +20,11 @@ type MessagePropsType = {
     photo: {}
     replies: number
     title: string
-    navigation: any
+
 }
 
-export const Message = ({date, like, name, photo, replies, title, navigation}: MessagePropsType) => {
+export const Message = ({date, like, name, photo, replies, title}: MessagePropsType) => {
+    const navigation = useNavigation();
     return (
         <TouchableOpacity onPress={() => navigation.navigate('User\'s message')}>
             <MessageContainer>

@@ -8,7 +8,6 @@ const Stack = createStackNavigator();
 
 export const MessagesScreenNavigator: FC = () => {
     return (
-
         <Stack.Navigator>
             <Stack.Screen name="Messages" component={MessageScreen}/>
             <Stack.Screen name="User's message" component={UserMessagesScreen}/>
