@@ -8,7 +8,7 @@ export const FriendScreen: FC = ({navigation}: any) => {
         <FriendScreenContainer>
             <Button
                 title="Friend's Messages"
-                onPress={() => navigation.navigate('Friends')}
+                onPress={() => navigation.navigate('Messages', {screen: 'User\'s message'})}
             />
         </FriendScreenContainer>
     );

@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 export const UserMessagesScreen: FC = () => {
     return (
         <UserMessagesScreenContainer>
-            <Text>UsersMessages Screen</Text>
+            <Text>User's messages screen</Text>
         </UserMessagesScreenContainer>
     );
 };

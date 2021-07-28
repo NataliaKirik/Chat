@@ -10,6 +10,7 @@ import {
     MessageTitle,
     UserName
 } from "./MessageStyledConst";
+import {TouchableOpacity} from "react-native";
 
 type MessagePropsType = {
     date: string
@@ -18,36 +19,39 @@ type MessagePropsType = {
     photo: {}
     replies: number
     title: string
+    navigation: any
 }
 
-export const Message = ({date, like, name, photo, replies, title}: MessagePropsType) => {
+export const Message = ({date, like, name, photo, replies, title, navigation}: MessagePropsType) => {
     return (
-        <MessageContainer>
-            <Avatar source={photo}/>
-            <MainContainer>
-                <MessageTitle numberOfLines={1}
-                              ellipsizeMode="tail">{title}</MessageTitle>
-                <UserName>{name}</UserName>
-                <MessageReplies>{`${replies} Replies`}</MessageReplies>
-            </MainContainer>
+        <TouchableOpacity onPress={() => navigation.navigate('User\'s message')}>
+            <MessageContainer>
+                <Avatar source={photo}/>
+                <MainContainer>
+                    <MessageTitle numberOfLines={1}
+                                  ellipsizeMode="tail">{title}</MessageTitle>
+                    <UserName>{name}</UserName>
+                    <MessageReplies>{`${replies} Replies`}</MessageReplies>
+                </MainContainer>
 
-            <LikeAndDateContainer>
-                {like ?
-                    (<ImageHeart
-                        color={"#df245e"}
-                        resizeMode={"contain"}
-                        source={require("../../assets/images/like/unLike.png")}/>)
-                    :
-                    (<ImageHeart
-                        color={"#6e7f8d"}
-                        resizeMode={"stretch"}
-                        source={require("../../assets/images/like/like.png")}/>)
-                }
-                <Date>
-                    {date.slice(0, 10)}
-                </Date>
-            </LikeAndDateContainer>
-        </MessageContainer>
+                <LikeAndDateContainer>
+                    {like ?
+                        (<ImageHeart
+                            color={"#df245e"}
+                            resizeMode={"contain"}
+                            source={require("../../assets/images/like/unLike.png")}/>)
+                        :
+                        (<ImageHeart
+                            color={"#6e7f8d"}
+                            resizeMode={"stretch"}
+                            source={require("../../assets/images/like/like.png")}/>)
+                    }
+                    <Date>
+                        {date.slice(0, 10)}
+                    </Date>
+                </LikeAndDateContainer>
+            </MessageContainer>
+        </TouchableOpacity>
     );
 };
 
