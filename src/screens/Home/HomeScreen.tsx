@@ -12,11 +12,11 @@ export const HomeScreen: FC = () => {
         <HomeScreenContainer>
             <ButtonsContainer>
                 <Button
-                    title={I18n.t('homeButtonFriends')}
+                    title={I18n.t('tabFriends')}
                     onPress={() => navigation.navigate('Friends')}
                 />
                 <Button
-                    title={I18n.t('homeButtonFeedBack')}
+                    title={I18n.t('tabFeedBack')}
                     onPress={() => navigation.navigate('FeedBack Form')}
                 />
             </ButtonsContainer>

@@ -1,7 +1,12 @@
 export default {
     greeting: 'Привет!',
-    homeButtonFriends: 'Друзья',
-    homeButtonFeedBack: 'Форма обратной связи',
-    tabButtonHome: 'Главный экран',
-    tabButtonMessages: 'Сообщения',
+    tabFriends: 'Друзья',
+    tabFeedBack: 'Форма обратной связи',
+    tabHome: 'Главный экран',
+    tabMessages: 'Сообщения',
+    userMessages: 'Сообщения пользователя',
+    email: 'Электронная почта',
+    password: 'Пароль',
+    message: 'Сообщение',
+    submit: 'отправить'
 }

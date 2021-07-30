@@ -1,7 +1,13 @@
 export default {
     greeting: 'Hi!',
-    homeButtonFriends: 'Friends',
-    homeButtonFeedBack: 'FeedBack Form',
-    tabButtonHome: 'Home',
-    tabButtonMessages: 'Messages',
+    tabFriends: 'Friends',
+    tabFeedBack: 'FeedBack Form',
+    tabHome: 'Home',
+    tabMessages: 'Messages',
+    userMessages: 'User\'s messages screen',
+    email: 'email',
+    password: 'password',
+    message: 'message',
+    submit:'submit'
 }
+

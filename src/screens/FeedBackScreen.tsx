@@ -3,7 +3,8 @@ import styled from 'styled-components/native'
 import {ScrollView} from 'react-native';
 import {FormBuilder} from 'react-native-paper-form-builder';
 import {useForm} from 'react-hook-form';
-import {Button} from 'react-native-paper';
+import {Button} from 'react-native-paper'
+import I18n from '../i18n';
 
 
 export const FeedBackScreen: FC = () => {
@@ -37,7 +38,7 @@ export const FeedBackScreen: FC = () => {
                                 },
                             },
                             textInputProps: {
-                                label: 'Email',
+                                label: I18n.t('email'),
                             },
                         },
                         {
@@ -58,7 +59,7 @@ export const FeedBackScreen: FC = () => {
                                 },
                             },
                             textInputProps: {
-                                label: 'Password',
+                                label: I18n.t('password'),
                             },
                         },
                         {
@@ -71,7 +72,7 @@ export const FeedBackScreen: FC = () => {
                                 },
                             },
                             textInputProps: {
-                                label: 'Message',
+                                label: I18n.t('message'),
                             },
                         }
                     ]}
@@ -81,7 +82,7 @@ export const FeedBackScreen: FC = () => {
                     onPress={handleSubmit((data: any) => {
                         console.log('form data', data);
                     })}>
-                    Submit
+                    {I18n.t('submit')}
                 </Button>
             </ScrollView>
         </ScreenContainer>
