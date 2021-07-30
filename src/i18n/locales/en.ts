@@ -1,4 +1,5 @@
 export default {
+    headerButtonBack:'Back',
     greeting: 'Hi!',
     tabFriends: 'Friends',
     tabFeedBack: 'FeedBack Form',

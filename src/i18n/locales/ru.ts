@@ -1,4 +1,5 @@
 export default {
+    headerButtonBack:'Назад',
     greeting: 'Привет!',
     tabFriends: 'Друзья',
     tabFeedBack: 'Форма обратной связи',

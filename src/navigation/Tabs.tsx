@@ -1,8 +1,8 @@
 import React, {FC} from "react";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import EntypoIcons from "react-native-vector-icons/Entypo";
-import {HomeScreenNavigator} from "../screens/Home/HomeScreenNavigator";
-import {MessagesScreenNavigator} from "../screens/Messages/MessagesScreenNavigator";
+import {HomeScreenNavigator} from "./HomeScreenNavigator";
+import {MessagesScreenNavigator} from "./MessagesScreenNavigator";
 import I18n from '../i18n';
 
 

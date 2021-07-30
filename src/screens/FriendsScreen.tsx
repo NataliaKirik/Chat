@@ -12,7 +12,7 @@ export const FriendScreen: FC = () => {
         <FriendScreenContainer>
             <Button
                 title={I18n.t('userMessages')}
-                onPress={() => navigation.navigate(I18n.t('tabMessages'), {screen: 'User\'s message'})}
+                onPress={() => navigation.navigate(I18n.t('tabMessages'), {screen: I18n.t('userMessages')})}
             />
         </FriendScreenContainer>
     );
