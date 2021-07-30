@@ -11,7 +11,8 @@ export const MessagesScreenNavigator: FC = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Messages" component={MessageScreen} options={{title: I18n.t('tabMessages')}}/>
-            <Stack.Screen name="User's message" component={UserMessagesScreen}/>
+            <Stack.Screen name="User's message" component={UserMessagesScreen}
+                          options={{title: I18n.t('userMessages')}}/>
         </Stack.Navigator>
 
     );

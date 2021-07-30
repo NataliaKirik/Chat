@@ -29,12 +29,12 @@ export const FeedBackScreen: FC = () => {
                             rules: {
                                 required: {
                                     value: true,
-                                    message: 'Email is required',
+                                    message: I18n.t('emailWarning'),
                                 },
                                 pattern: {
                                     value:
                                         /^[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})$/,
-                                    message: 'Email is invalid',
+                                    message: I18n.t('checkingEmailWarning'),
                                 },
                             },
                             textInputProps: {
@@ -47,15 +47,15 @@ export const FeedBackScreen: FC = () => {
                             rules: {
                                 required: {
                                     value: true,
-                                    message: 'Password is required',
+                                    message: I18n.t('passwordWarning'),
                                 },
                                 minLength: {
                                     value: 5,
-                                    message: 'Password should be at least 5 characters',
+                                    message: I18n.t('passwordWarningMinLength'),
                                 },
                                 maxLength: {
                                     value: 15,
-                                    message: 'Password should be between 5 and 15 characters',
+                                    message: I18n.t('passwordWarningMaxLength'),
                                 },
                             },
                             textInputProps: {
@@ -68,7 +68,7 @@ export const FeedBackScreen: FC = () => {
                             rules: {
                                 required: {
                                     value: false,
-                                    message: 'Message is required',
+                                    message: I18n.t('messageWarning'),
                                 },
                             },
                             textInputProps: {

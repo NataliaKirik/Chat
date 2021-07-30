@@ -1,12 +1,13 @@
 import React, {FC} from "react";
 import {Text} from "react-native";
 import styled from 'styled-components/native'
+import I18n from "../i18n";
 
 
 export const UserMessagesScreen: FC = () => {
     return (
         <UserMessagesScreenContainer>
-            <Text>User's messages screen</Text>
+            <Text>{I18n.t('userMessages')}</Text>
         </UserMessagesScreenContainer>
     );
 };

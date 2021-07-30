@@ -7,13 +7,12 @@ import I18n from "../i18n";
 
 export const FriendScreen: FC = () => {
     const navigation = useNavigation();
-    const tabMessages = I18n.t('tabMessages')
 
     return (
         <FriendScreenContainer>
             <Button
                 title={I18n.t('userMessages')}
-                onPress={() => navigation.navigate(tabMessages, {screen: 'User\'s message'})}
+                onPress={() => navigation.navigate(I18n.t('tabMessages'), {screen: 'User\'s message'})}
             />
         </FriendScreenContainer>
     );
