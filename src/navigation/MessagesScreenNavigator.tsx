@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
-import {MessageScreen} from "../screens/Messages/MessageScreen";
+import {MessageScreen} from "../screens/Messages/ui/MessageScreen";
 import {UserMessagesScreen} from "../screens/UserMessagesScreen";
 import I18n from "../i18n";
 

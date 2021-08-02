@@ -1,6 +1,6 @@
 import React, {FC} from "react";
 import {NavigationContainer} from "@react-navigation/native";
-import {Tabs} from "./src/navigation/Tabs";
+import {Tabs} from "../navigation/Tabs";
 
 
 const App: FC = () => {
