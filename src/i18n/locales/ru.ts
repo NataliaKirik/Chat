@@ -1,5 +1,5 @@
 export default {
-    headerButtonBack:'Назад',
+    headerButtonBack: 'Назад',
     greeting: 'Привет!',
     tabFriends: 'Друзья',
     tabFeedBack: 'Форма обратной связи',
@@ -15,5 +15,10 @@ export default {
     passwordWarningMaxLength: 'Пароль должен содержать от 5 до 15 символов',
     emailWarning: 'Требуется электронная почта',
     checkingEmailWarning: 'Электронная почта недействительна',
-    messageWarning: 'Требуется сообщение'
+    messageWarning: 'Требуется сообщение',
+    chatTab: 'Чат',
+    chatTitle: 'Ваше имя?',
+    chatInputTitle: 'введите ваше имя',
+    chatButton: 'Присоединиться',
+    chatInputMessage:'Введите ваше сообщение'
 }

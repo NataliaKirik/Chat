@@ -1,8 +1,9 @@
 import React, {FC} from "react";
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import {MessageScreen} from "../screens/Messages/ui/MessageScreen";
-import {UserMessagesScreen} from "../screens/UserMessagesScreen";
+import {UserMessagesScreen} from "../screens/Chat/UserMessagesScreen";
 import I18n from "../i18n";
+import {ChatScreen} from "../screens/Chat/ChatScreen";
 
 
 const Stack = createStackNavigator();
@@ -21,6 +22,8 @@ export const MessagesScreenNavigator: FC = () => {
                                   />
                               ),
                           }}/>
+            <Stack.Screen name={I18n.t('chatTab')} component={ChatScreen}
+            />
         </Stack.Navigator>
 
     );

@@ -25,6 +25,7 @@ type MessagePropsType = {
 }
 
 export const Message = ({date, like, name, photo, replies, title}: MessagePropsType) => {
+    debugger
     const navigation = useNavigation();
     return (
         <TouchableOpacity onPress={() => navigation.navigate(I18n.t('userMessages'))}>

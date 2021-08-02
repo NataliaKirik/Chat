@@ -9,7 +9,16 @@ const instance = axios.create({
 export const commonAPI = {
     getForumAllData() {
         return instance.get<ForumAllDataResponseType>(`forum/all`)
+    },
+    addChatUserData(senderName: string, receiverName: string, message: string) {
+        return instance.post(`chat/add`, {
+            senderName, receiverName, message
+        })
+    },
+    getChatUserData() {
+        return instance.get<ChatUserData>(`chat/all`)
     }
+
 }
 
 
@@ -29,4 +38,11 @@ export type ForumUserDataType = {
     replies: number
     date: string
     like: boolean
+}
+export type ChatUserData = {
+    senderName: string
+    receiverName: string
+    message: string
+    id: string
+    date: string
 }

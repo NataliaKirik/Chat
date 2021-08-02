@@ -1,5 +1,5 @@
 export default {
-    headerButtonBack:'Back',
+    headerButtonBack: 'Back',
     greeting: 'Hi!',
     tabFriends: 'Friends',
     tabFeedBack: 'FeedBack Form',
@@ -15,7 +15,11 @@ export default {
     passwordWarningMaxLength: 'Password should be between 5 and 15 characters',
     emailWarning: 'Email is required',
     checkingEmailWarning: 'Email is invalid',
-    messageWarning: 'Message is required'
-
+    messageWarning: 'Message is required',
+    chatTab: 'Chat',
+    chatTitle: 'Your name?',
+    chatInputTitle: 'Enter your name',
+    chatButton: 'Join',
+    chatInputMessage:'Enter your message'
 }
 
