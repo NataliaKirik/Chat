@@ -10,13 +10,13 @@ export const commonAPI = {
     getForumAllData() {
         return instance.get<ForumAllDataResponseType>(`forum/all`)
     },
-    addChatUserData(senderName: string, receiverName: string, message: string) {
+    addChatUserData(senderName: string, message: string) {
         return instance.post(`chat/add`, {
-            senderName, receiverName, message
+            senderName, receiverName: 'me', message
         })
     },
     getChatUserData() {
-        return instance.get<ChatUserData>(`chat/all`)
+        return instance.get(`chat/all`)
     }
 
 }
@@ -39,7 +39,7 @@ export type ForumUserDataType = {
     date: string
     like: boolean
 }
-export type ChatUserData = {
+export type ChatUserDataType = {
     senderName: string
     receiverName: string
     message: string
