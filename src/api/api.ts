@@ -5,10 +5,28 @@ const instance = axios.create({
     baseURL: 'http://localhost:8080/',
 })
 
+
 export const commonAPI = {
     getForumAllData() {
-        return instance.get(`forum/all`)
+        return instance.get<ForumAllDataResponseType>(`forum/all`)
     }
 }
 
-type ForumAllDataResponseType = {}
+
+//types
+export type ForumAllDataResponseType = {
+    data: Array<ForumUserDataType>
+    status: number
+    statusText: undefined
+    headers: {}
+    config: {}
+    request: {}
+}
+export type ForumUserDataType = {
+    title: string
+    photo: string
+    name: string
+    replies: number
+    date: string
+    like: boolean
+}
