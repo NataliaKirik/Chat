@@ -1,14 +1,13 @@
 import React, {FC} from "react";
-import {Text} from "react-native";
-import styled from 'styled-components/native'
 import I18n from "react-native-i18n";
-import {TextInput, Button} from 'react-native-paper';
+import {Button, TextInput} from 'react-native-paper';
 import {useNavigation} from "@react-navigation/native";
 import {useDispatch} from "react-redux";
-import {setSenderNameAC} from "../bll/chatReducer";
+import {setSenderNameAC} from "../bll/chatUserNameReducer";
+import {Title, UserMessagesScreenContainer} from "./NameScreenStyle"
 
 
-export const Name: FC = () => {
+export const NameScreen: FC = () => {
     const [name, setName] = React.useState('');
     const navigation = useNavigation();
     const dispatch = useDispatch()
@@ -33,14 +32,5 @@ export const Name: FC = () => {
     );
 };
 
-const UserMessagesScreenContainer = styled.View`
-  flex: 1;
-  justify-content: center;
-  padding: 15px;
-`;
-const Title = styled.Text`
-  font-size: 20px;
-  text-align: center;
-  margin-bottom: 15px;
-`;
+
 

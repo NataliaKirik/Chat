@@ -1,21 +1,25 @@
 import React, {FC, useEffect} from "react";
-import {FlatList, SafeAreaView} from "react-native";
-import styled from 'styled-components/native'
-import {Button, TextInput} from 'react-native-paper';
-import AntDesign from "react-native-vector-icons/AntDesign";
+import {FlatList} from "react-native";
 import I18n from "react-native-i18n";
 import {useDispatch, useSelector} from "react-redux";
-import {addChatUserDataTC} from "../bll/chatReducer";
+import {addChatUserDataTC} from "../bll/chatUserNameReducer";
 import {AppRootStateType} from "../../../app/store";
 import {ChatMessage} from "../../../components/ChatMessage/ChatMessage";
-import {getForumAllDataTC} from "../../Messages/bll/forumDataReducer";
 import {getChatMessageDataTC} from "../bll/chatMessagesReducer";
+import {
+    ChatScreenContainer,
+    InputAndButtonContainer,
+    TextInputStyled,
+    ButtonStyled,
+    AntDesignStyled
+} from "./ChatMessagesScreenStyle"
+import {ChatUserDataType} from "../../../api/api";
 
 export const ChatMessagesScreen: FC = () => {
     const [message, setMessage] = React.useState('');
     const dispatch = useDispatch()
-    const senderName = useSelector<AppRootStateType, string>(state => state.chat.senderName)
-    const data = useSelector<AppRootStateType, any>(state => state.chatMessages.data)
+    const senderName = useSelector<AppRootStateType, string>(state => state.chatUserName.senderName)
+    const data = useSelector<AppRootStateType, Array<ChatUserDataType>>(state => state.chatMessages.data)
 
     useEffect(() => {
         dispatch(getChatMessageDataTC())
@@ -36,31 +40,17 @@ export const ChatMessagesScreen: FC = () => {
                 keyExtractor={(_, index) => "List-" + index}
             />
             <InputAndButtonContainer>
-                <TextInput
+                <TextInputStyled
                     value={message}
                     onChangeText={message => setMessage(message)}
                     multiline={true}
                     placeholder={I18n.t('chatInputMessage')}
-                    style={{width: '85%'}}
                 />
-                <Button mode="contained" onPress={onPressBtnSend}
-                        style={{justifyContent: 'center', width: '15%'}}>
-                    <AntDesign name={"caretright"} style={{fontSize: 20}}/>
-                </Button>
+                <ButtonStyled mode="contained" onPress={onPressBtnSend}>
+                    <AntDesignStyled name={"caretright"}/>
+                </ButtonStyled>
             </InputAndButtonContainer>
         </ChatScreenContainer>
-
     );
 };
 
-const ChatScreenContainer = styled.View`
-  flex: 1;
-`;
-const InputAndButtonContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  border: black 1px solid;
-`;
-const ButtonSend = styled.Button`
-`;

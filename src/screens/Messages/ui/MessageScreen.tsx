@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../app/store";
 import {getForumAllDataTC} from "../bll/forumDataReducer";
 import {ForumUserDataType} from "../../../api/api";
+import {DropShadowStyled} from "./MessageScreenStyle";
 
 
 export const MessageScreen: FC = () => {
@@ -22,19 +23,9 @@ export const MessageScreen: FC = () => {
             <FlatList
                 data={data}
                 renderItem={({item}) => (
-                    <DropShadow
-                        style={{
-                            shadowColor: "#000",
-                            shadowOffset: {
-                                width: 0,
-                                height: 0
-                            },
-                            shadowOpacity: 1,
-                            shadowRadius: 3
-                        }}
-                    >
+                    <DropShadowStyled>
                         <Message {...item}/>
-                    </DropShadow>
+                    </DropShadowStyled>
                 )}
                 keyExtractor={(_, index) => "List-" + index}
                 CellRendererComponent={DropShadow}

@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import {primaryRed} from '../../common/styles/colors'
 
 
 export const MainContainer = styled.View`

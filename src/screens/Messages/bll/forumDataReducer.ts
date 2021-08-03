@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {commonAPI, ForumAllDataResponseType} from "../../../api/api";
+import {commonAPI} from "../../../api/api";
 
 const initialState = {
     data: []

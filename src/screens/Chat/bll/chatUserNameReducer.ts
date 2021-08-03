@@ -2,17 +2,13 @@ import {Dispatch} from "redux";
 import {commonAPI} from "../../../api/api";
 
 const initialState = {
-    senderName: "test",
-    receiverName: "me",
-    message: ""
+    senderName: ''
 }
 
-export const chatReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
+export const chatUserNameReducer = (state: InitialStateType = initialState, action: setSenderNameACType): InitialStateType => {
     switch (action.type) {
         case 'chat/SET_SENDER-NAME':
             return {...state, senderName: action.senderName}
-        case 'chat/SET_MESSAGE':
-            return {...state, message: action.message}
         default:
             return state
     }
@@ -23,10 +19,6 @@ export const setSenderNameAC = (senderName: string) => ({
     type: 'chat/SET_SENDER-NAME',
     senderName
 } as const)
-export const setMessageAC = (message: string) => ({
-    type: 'chat/SET_MESSAGE',
-    message
-} as const)
 
 
 // thunk
@@ -34,7 +26,6 @@ export const addChatUserDataTC = (senderName: string, message: string) => (dispa
     commonAPI.addChatUserData(senderName, message)
         .then(res => {
             dispatch(setSenderNameAC(res.data.senderName))
-            dispatch(setMessageAC(res.data.message))
         })
         .catch(e => {
             console.log('error: ', e)
@@ -46,8 +37,6 @@ export const addChatUserDataTC = (senderName: string, message: string) => (dispa
 type InitialStateType = typeof initialState
 
 export type setSenderNameACType = ReturnType<typeof setSenderNameAC>
-export type setMessageACType = ReturnType<typeof setMessageAC>
-type ActionsType =
-    setSenderNameACType
-    | setMessageACType
+
+
 

@@ -41,7 +41,7 @@ export const MessageReplies = styled.Text`
 export const ImageHeart = styled.Image<{ color: string }>`
   width: 25px;
   height: 25px;
-  color: ${props => props.color};
+  overlayColor: ${props => props.color};
 `;
 export const Date = styled.Text`
   color: #6e7f8d;

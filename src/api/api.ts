@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const IP='http://192.168.48.53:8080'
+export const IP = 'http://192.168.48.53:8080'
 
 const instance = axios.create({
     withCredentials: true,
@@ -10,7 +10,7 @@ const instance = axios.create({
 
 export const commonAPI = {
     getForumAllData() {
-        return instance.get<ForumAllDataResponseType>(`forum/all`)
+        return instance.get<ForumAllDataType>(`forum/all`)
     },
     addChatUserData(senderName: string, message: string) {
         return instance.post(`chat/add`, {
@@ -18,14 +18,14 @@ export const commonAPI = {
         })
     },
     getChatUserData() {
-        return instance.get(`chat/all`)
+        return instance.get<ChatDataType>(`chat/all`)
     }
 
 }
 
 
 //types
-export type ForumAllDataResponseType = {
+export type ForumAllDataType = {
     data: Array<ForumUserDataType>
     status: number
     statusText: undefined
@@ -40,6 +40,14 @@ export type ForumUserDataType = {
     replies: number
     date: string
     like: boolean
+}
+export type ChatDataType = {
+    data: Array<ChatUserDataType>
+    status: number
+    statusText: undefined
+    headers: {}
+    config: {}
+    request: {}
 }
 export type ChatUserDataType = {
     senderName: string
