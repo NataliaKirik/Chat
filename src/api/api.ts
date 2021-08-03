@@ -10,7 +10,7 @@ const instance = axios.create({
 
 export const commonAPI = {
     getForumAllData() {
-        return instance.get<ForumAllDataType>(`forum/all`)
+        return instance.get<ForumUserDataType[]>(`forum/all`).then(res => res.data)
     },
     addChatUserData(senderName: string, message: string) {
         return instance.post(`chat/add`, {
@@ -18,21 +18,13 @@ export const commonAPI = {
         })
     },
     getChatUserData() {
-        return instance.get<ChatDataType>(`chat/all`)
+        return instance.get<ChatUserDataType[]>(`chat/all`).then(res => res.data)
     }
 
 }
 
 
 //types
-export type ForumAllDataType = {
-    data: Array<ForumUserDataType>
-    status: number
-    statusText: undefined
-    headers: {}
-    config: {}
-    request: {}
-}
 export type ForumUserDataType = {
     title: string
     photo: string
@@ -40,14 +32,6 @@ export type ForumUserDataType = {
     replies: number
     date: string
     like: boolean
-}
-export type ChatDataType = {
-    data: Array<ChatUserDataType>
-    status: number
-    statusText: undefined
-    headers: {}
-    config: {}
-    request: {}
 }
 export type ChatUserDataType = {
     senderName: string

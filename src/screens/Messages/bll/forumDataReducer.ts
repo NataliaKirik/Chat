@@ -1,21 +1,21 @@
 import {Dispatch} from "redux";
-import {commonAPI} from "../../../api/api";
+import {commonAPI, ForumUserDataType} from "../../../api/api";
 
-const initialState = {
+const initialState: InitialStateType = {
     data: []
 }
 
 export const forumReducer = (state: InitialStateType = initialState, action: setForumDataACType): InitialStateType => {
     switch (action.type) {
         case 'forum/SET_DATA':
-            return {...state, ...action.arrayUsersData}
+            return {...state, data: action.arrayUsersData}
         default:
             return state
     }
 };
 
 //actions
-export const setForumDataAC = (arrayUsersData: any) => ({
+export const setForumDataAC = (arrayUsersData: ForumUserDataType[]) => ({
     type: 'forum/SET_DATA',
     arrayUsersData
 } as const)
@@ -34,6 +34,8 @@ export const getForumAllDataTC = () => (dispatch: Dispatch) => {
 
 
 //types
-type InitialStateType = typeof initialState
+type InitialStateType = {
+    data: ForumUserDataType[]
+}
 export type setForumDataACType = ReturnType<typeof setForumDataAC>
 

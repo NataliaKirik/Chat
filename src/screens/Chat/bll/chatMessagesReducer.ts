@@ -1,21 +1,21 @@
 import {Dispatch} from "redux";
-import {commonAPI} from "../../../api/api";
+import {ChatUserDataType, commonAPI} from "../../../api/api";
 
-const initialState = {
+const initialState: InitialStateType = {
     data: []
 }
 
 export const chatMessageDataReducer = (state: InitialStateType = initialState, action: setChatMessageDataACType): InitialStateType => {
     switch (action.type) {
         case 'chat/SET_DATA':
-            return {...state, ...action.arrayUsersData}
+            return {...state, data: action.arrayUsersData}
         default:
             return state
     }
 };
 
 //actions
-export const setChatMessageDataAC = (arrayUsersData: any) => ({
+export const setChatMessageDataAC = (arrayUsersData: ChatUserDataType[]) => ({
     type: 'chat/SET_DATA',
     arrayUsersData
 } as const)
@@ -34,5 +34,7 @@ export const getChatMessageDataTC = () => (dispatch: Dispatch) => {
 
 
 //types
-type InitialStateType = typeof initialState
+type InitialStateType = {
+    data: ChatUserDataType[]
+}
 export type setChatMessageDataACType = ReturnType<typeof setChatMessageDataAC>

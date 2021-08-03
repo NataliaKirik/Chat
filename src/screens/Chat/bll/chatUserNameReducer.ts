@@ -5,6 +5,9 @@ const initialState = {
     senderName: ''
 }
 
+// const setSenderName = createAction<string>('chat/SET_SENDER-NAME');
+// createReducer(builder => builder.addCase(setSenderName, (state, action) => {state.senderName = action.payload}));
+// setSenderName.type
 export const chatUserNameReducer = (state: InitialStateType = initialState, action: setSenderNameACType): InitialStateType => {
     switch (action.type) {
         case 'chat/SET_SENDER-NAME':
