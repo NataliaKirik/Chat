@@ -13,6 +13,7 @@ import {
 import {TouchableOpacity} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import I18n from "../../i18n";
+import {IP} from "../../api/api";
 
 type MessagePropsType = {
     date: string
@@ -29,7 +30,7 @@ export const Message = ({date, like, name, photo, replies, title}: MessagePropsT
     return (
         <TouchableOpacity onPress={() => navigation.navigate(I18n.t('userMessages'))}>
             <MessageContainer>
-                <Avatar source={photo}/>
+                <Avatar source={{uri: IP + photo}}/>
                 <MainContainer>
                     <MessageTitle numberOfLines={1}
                                   ellipsizeMode="tail">{title}</MessageTitle>

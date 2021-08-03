@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+export const IP='http://192.168.48.53:8080'
+
 const instance = axios.create({
     withCredentials: true,
     baseURL: 'http://localhost:8080/',

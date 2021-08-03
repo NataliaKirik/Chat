@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addChatUserDataTC} from "../bll/chatReducer";
 import {AppRootStateType} from "../../../app/store";
 
-export const ChatScreen: FC = () => {
+export const ChatMessagesScreen: FC = () => {
     const [message, setMessage] = React.useState('');
     const dispatch = useDispatch()
     const senderName = useSelector<AppRootStateType, string>(state => state.chat.senderName)

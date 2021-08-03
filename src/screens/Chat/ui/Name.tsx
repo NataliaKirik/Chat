@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux";
 import {setSenderNameAC} from "../bll/chatReducer";
 
 
-export const UserMessagesScreen: FC = () => {
+export const Name: FC = () => {
     const [name, setName] = React.useState('');
     const navigation = useNavigation();
     const dispatch = useDispatch()
