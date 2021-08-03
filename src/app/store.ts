@@ -2,10 +2,12 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import thunkMiddleware from "redux-thunk"
 import {forumReducer} from "../screens/Messages/bll/forumDataReducer";
 import {chatReducer} from "../screens/Chat/bll/chatReducer";
+import {chatMessageDataReducer} from "../screens/Chat/bll/chatMessagesReducer";
 
 const rootReducer = combineReducers({
     forum: forumReducer,
-    chat: chatReducer
+    chat: chatReducer,
+    chatMessages: chatMessageDataReducer
 })
 
 
