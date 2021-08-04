@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
     Avatar,
     Date,
@@ -9,11 +9,11 @@ import {
     MessageReplies,
     MessageTitle,
     UserName
-} from "./MessageStyledConst";
-import {TouchableOpacity} from "react-native";
-import {useNavigation} from "@react-navigation/native";
-import I18n from "../../i18n";
-import {IP} from "../../api/api";
+} from './MessageStyledConst';
+import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import I18n from '../../i18n';
+import { IP } from '../../api/api';
 
 type MessagePropsType = {
     date: string
@@ -25,12 +25,12 @@ type MessagePropsType = {
 
 }
 
-export const Message = ({date, like, name, photo, replies, title}: MessagePropsType) => {
+export const Message = ({ date, like, name, photo, replies, title }: MessagePropsType) => {
     const navigation = useNavigation();
     return (
         <TouchableOpacity onPress={() => navigation.navigate(I18n.t('userMessages'))}>
             <MessageContainer>
-                <Avatar source={{uri: IP + photo}}/>
+                <Avatar source={{ uri: IP + photo }} />
                 <MainContainer>
                     <MessageTitle numberOfLines={1}
                                   ellipsizeMode="tail">{title}</MessageTitle>
@@ -41,14 +41,14 @@ export const Message = ({date, like, name, photo, replies, title}: MessagePropsT
                 <LikeAndDateContainer>
                     {like ?
                         (<ImageHeart
-                            color={"#df245e"}
-                            resizeMode={"contain"}
-                            source={require("../../assets/images/like/unLike.png")}/>)
+                            color={'#df245e'}
+                            resizeMode={'contain'}
+                            source={require('../../assets/images/like/unLike.png')} />)
                         :
                         (<ImageHeart
-                            color={"#6e7f8d"}
-                            resizeMode={"stretch"}
-                            source={require("../../assets/images/like/like.png")}/>)
+                            color={'#6e7f8d'}
+                            resizeMode={'stretch'}
+                            source={require('../../assets/images/like/like.png')} />)
                     }
                     <Date>
                         {date.slice(0, 10)}
