@@ -1,21 +1,21 @@
-import React, {FC} from "react";
-import I18n from "react-native-i18n";
-import {Button, TextInput} from 'react-native-paper';
-import {useNavigation} from "@react-navigation/native";
-import {useDispatch} from "react-redux";
-import {setSenderNameAC} from "../bll/chatUserNameReducer";
-import {Title, UserMessagesScreenContainer} from "./NameScreenStyle"
+import React, { FC } from 'react';
+import I18n from 'react-native-i18n';
+import { Button, TextInput } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { Title, UserMessagesScreenContainer } from './NameScreenStyle';
+import { setSenderNameAC } from '../bll/chatUserNameReducer';
 
 
 export const NameScreen: FC = () => {
     const [name, setName] = React.useState('');
     const navigation = useNavigation();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const onPressBtnJoin = () => {
-        dispatch(setSenderNameAC(name))
-        navigation.navigate(I18n.t('chatTab'))
-    }
+        dispatch(setSenderNameAC({ senderName: name }));
+        navigation.navigate(I18n.t('chatTab'));
+    };
 
     return (
         <UserMessagesScreenContainer>

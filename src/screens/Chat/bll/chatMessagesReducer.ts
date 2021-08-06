@@ -1,40 +1,37 @@
-import {Dispatch} from "redux";
-import {ChatUserDataType, commonAPI} from "../../../api/api";
+import { Dispatch } from 'redux';
+import { ChatUserDataType, commonAPI } from '../../../api/api';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
     data: []
-}
-
-export const chatMessageDataReducer = (state: InitialStateType = initialState, action: setChatMessageDataACType): InitialStateType => {
-    switch (action.type) {
-        case 'chat/SET_DATA':
-            return {...state, data: action.arrayUsersData}
-        default:
-            return state
-    }
 };
 
-//actions
-export const setChatMessageDataAC = (arrayUsersData: ChatUserDataType[]) => ({
-    type: 'chat/SET_DATA',
-    arrayUsersData
-} as const)
+const slice = createSlice({
+    name: 'chatMessages',
+    initialState: initialState,
+    reducers: {
+        setChatMessageDataAC(state: InitialStateType, action: PayloadAction<{ arrayUsersData: ChatUserDataType[] }>) {
+            state.data = action.payload.arrayUsersData;
+        }
+    }
+});
+export const chatMessageDataReducer = slice.reducer;
+const { setChatMessageDataAC } = slice.actions;
 
 
 // thunk
 export const getChatMessageDataTC = () => (dispatch: Dispatch) => {
     commonAPI.getChatUserData()
         .then(res => {
-            dispatch(setChatMessageDataAC(res))
+            dispatch(setChatMessageDataAC({ arrayUsersData: res }));
         })
         .catch(e => {
-            console.log('error: ', e)
-        })
-}
+            console.log('error: ', e);
+        });
+};
 
 
 //types
 type InitialStateType = {
     data: ChatUserDataType[]
 }
-export type setChatMessageDataACType = ReturnType<typeof setChatMessageDataAC>
