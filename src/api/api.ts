@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export const IP = 'http://192.168.100.7:8080';
+export const IP = 'http://192.168.48.53:8080';
 // export const IP = 'http://192.168.48.53:8080';
 // const IPHome = 'http://192.168.100.7:8080';
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: 'http://10.0.2.2:8080/'
+    baseURL: 'http://localhost:8080/'
 });
 // baseURL: 'http://localhost:8080/'
 // baseURLHome: 'http://10.0.2.2:8080/'

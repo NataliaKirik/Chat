@@ -1,5 +1,5 @@
 import React, {FC, useEffect} from "react";
-import {FlatList} from "react-native";
+import {FlatList, KeyboardAvoidingView, Platform, StyleSheet} from "react-native";
 import I18n from "react-native-i18n";
 import {useDispatch, useSelector} from "react-redux";
 import {addChatUserDataTC} from "../bll/chatUserNameReducer";
@@ -14,6 +14,8 @@ import {
     AntDesignStyled
 } from "./ChatMessagesScreenStyle"
 import {ChatUserDataType} from "../../../api/api";
+import {KeyboardAwareFlatList, KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+
 
 export const ChatMessagesScreen: FC = () => {
     const [message, setMessage] = React.useState('');
@@ -38,19 +40,31 @@ export const ChatMessagesScreen: FC = () => {
                     <ChatMessage {...item}/>
                 )}
                 keyExtractor={(_, index) => "List-" + index}
+                inverted={true}
             />
-            <InputAndButtonContainer>
-                <TextInputStyled
-                    value={message}
-                    onChangeText={message => setMessage(message)}
-                    multiline={true}
-                    placeholder={I18n.t('chatInputMessage')}
-                />
-                <ButtonStyled mode="contained" onPress={onPressBtnSend}>
-                    <AntDesignStyled name={"caretright"}/>
-                </ButtonStyled>
-            </InputAndButtonContainer>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === "ios" ? "padding" : "height"}
+                // style={styles.container}
+            >
+                <InputAndButtonContainer>
+                    <TextInputStyled
+                        value={message}
+                        onChangeText={message => setMessage(message)}
+                        multiline={true}
+                        placeholder={I18n.t('chatInputMessage')}
+                    />
+                    <ButtonStyled mode="contained" onPress={onPressBtnSend}>
+                        <AntDesignStyled name={"caretright"}/>
+                    </ButtonStyled>
+                </InputAndButtonContainer>
+            </KeyboardAvoidingView>
         </ChatScreenContainer>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    }
+})
 
