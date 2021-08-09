@@ -10,8 +10,6 @@ export const InputAndButtonContainer = styled.View`
   justify-content: space-between;
   width: 100%;
   border: black 1px solid;
-  margin-top: 610px;
-  position: absolute;
 `;
 export const TextInputStyled = styled(TextInput)`
   width: 85%;

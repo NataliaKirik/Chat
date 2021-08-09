@@ -34,7 +34,8 @@ export const ChatMessagesScreen: FC = () => {
     }
 
     return (
-        <KeyboardAwareScrollView style={{backgroundColor: '#4c69a5', flex: 1}} extraHeight={90}>
+        <KeyboardAwareScrollView style={styles.container} extraHeight={90}
+                                 contentContainerStyle={styles.contentContainerStyle}>
             <View>
                 <KeyboardAwareFlatList
                     data={data}
@@ -56,12 +57,43 @@ export const ChatMessagesScreen: FC = () => {
                 </ButtonStyled>
             </InputAndButtonContainer>
         </KeyboardAwareScrollView>
+
     );
 };
 
 const styles = StyleSheet.create({
+    mainView: {
+        flex: 1,
+        justifyContent: "space-between"
+    },
     container: {
+        backgroundColor: '#4c69a5',
         flex: 1
-    }
+    },
+    contentContainerStyle: {}
 })
+
+
+//     <KeyboardAwareScrollView style={styles.container} extraHeight={90} contentContainerStyle={styles.containerStyle}>
+//     <View>
+//     <KeyboardAwareFlatList
+// data={data}
+// renderItem={({item}) => (
+//     <ChatMessage {...item}/>
+// )}
+// keyExtractor={(_, index) => "List-" + index}
+// />
+// </View>
+// <InputAndButtonContainer>
+//     <TextInputStyled
+//         value={message}
+//         onChangeText={message => setMessage(message)}
+//         multiline={true}
+//         placeholder={I18n.t('chatInputMessage')}
+//     />
+//     <ButtonStyled mode="contained" onPress={onPressBtnSend}>
+//         <AntDesignStyled name={"caretright"}/>
+//     </ButtonStyled>
+// </InputAndButtonContainer>
+// </KeyboardAwareScrollView>
 
