@@ -1,10 +1,11 @@
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import I18n from 'react-native-i18n';
-import { Button, TextInput } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
-import { Title, UserMessagesScreenContainer } from './NameScreenStyle';
-import { setSenderNameAC } from '../bll/chatUserNameReducer';
+import {Button, TextInput} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {Title, UserMessagesScreenContainer} from './NameScreenStyle';
+import {setSenderNameAC} from '../bll/chatUserNameReducer';
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 
 export const NameScreen: FC = () => {
@@ -13,7 +14,7 @@ export const NameScreen: FC = () => {
     const dispatch = useDispatch();
 
     const onPressBtnJoin = () => {
-        dispatch(setSenderNameAC({ senderName: name }));
+        dispatch(setSenderNameAC({senderName: name}));
         navigation.navigate(I18n.t('chatTab'));
     };
 
