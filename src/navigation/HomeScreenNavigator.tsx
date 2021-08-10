@@ -7,7 +7,7 @@ import I18n from "../i18n";
 
 const Stack = createStackNavigator();
 
-export const HomeScreenNavigator: FC = () => {
+export const                                    HomeScreenNavigator: FC = () => {
 
     return (
         <Stack.Navigator>

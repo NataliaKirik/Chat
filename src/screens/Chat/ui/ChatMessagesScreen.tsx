@@ -2,7 +2,7 @@ import React, { FC, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import I18n from 'react-native-i18n';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChatUserDataTC } from '../bll/chatUserNameReducer';
+import { addChatUserDataTC } from '../../Login/bll/loginNameReducer';
 import { AppRootStateType } from '../../../app/store';
 import { ChatMessage } from '../../../components/ChatMessage/ChatMessage';
 import { getChatMessageDataTC } from '../bll/chatMessagesReducer';

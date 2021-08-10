@@ -3,9 +3,8 @@ import I18n from 'react-native-i18n';
 import {Button, TextInput} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
-import {Title, UserMessagesScreenContainer} from './NameScreenStyle';
-import {setSenderNameAC} from '../bll/chatUserNameReducer';
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {LoginScreenContainer, Title} from './LoginNameScreenStyle';
+import {setLoginNameAC} from "../bll/loginNameReducer";
 
 
 export const NameScreen: FC = () => {
@@ -14,12 +13,12 @@ export const NameScreen: FC = () => {
     const dispatch = useDispatch();
 
     const onPressBtnJoin = () => {
-        dispatch(setSenderNameAC({senderName: name}));
-        navigation.navigate(I18n.t('chatTab'));
+        dispatch(setLoginNameAC({loginName: name}));
+        navigation.navigate('Tabs');
     };
 
     return (
-        <UserMessagesScreenContainer>
+        <LoginScreenContainer>
             <Title>{I18n.t('chatTitle')}</Title>
             <TextInput
                 value={name}
@@ -29,7 +28,7 @@ export const NameScreen: FC = () => {
             <Button mode="outlined" onPress={onPressBtnJoin}>
                 {I18n.t('chatButton')}
             </Button>
-        </UserMessagesScreenContainer>
+        </LoginScreenContainer>
     );
 };
 

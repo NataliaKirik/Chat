@@ -10,31 +10,31 @@ import {
     MessageTitle,
     UserName
 } from './MessageStyledConst';
-import { TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import I18n from '../../i18n';
-import { IP } from '../../api/api';
+import {IP} from '../../api/api';
 
 type MessagePropsType = {
     date: string
     like: boolean
-    name: string
+    owner: string
     photo: {}
     replies: number
     title: string
 
 }
 
-export const Message = ({ date, like, name, photo, replies, title }: MessagePropsType) => {
+export const Message = ({date, like, owner, photo, replies, title}: MessagePropsType) => {
     const navigation = useNavigation();
     return (
         <TouchableOpacity onPress={() => navigation.navigate(I18n.t('userMessages'))}>
             <MessageContainer>
-                <Avatar source={{ uri: IP + photo }} />
+                <Avatar source={{uri: IP + photo}}/>
                 <MainContainer>
                     <MessageTitle numberOfLines={1}
                                   ellipsizeMode="tail">{title}</MessageTitle>
-                    <UserName>{name}</UserName>
+                    <UserName>{owner}</UserName>
                     <MessageReplies>{`${replies} Replies`}</MessageReplies>
                 </MainContainer>
 
@@ -43,12 +43,12 @@ export const Message = ({ date, like, name, photo, replies, title }: MessageProp
                         (<ImageHeart
                             color={'#df245e'}
                             resizeMode={'contain'}
-                            source={require('../../assets/images/like/unLike.png')} />)
+                            source={require('../../assets/images/like/unLike.png')}/>)
                         :
                         (<ImageHeart
                             color={'#6e7f8d'}
                             resizeMode={'stretch'}
-                            source={require('../../assets/images/like/like.png')} />)
+                            source={require('../../assets/images/like/like.png')}/>)
                     }
                     <Date>
                         {date.slice(0, 10)}

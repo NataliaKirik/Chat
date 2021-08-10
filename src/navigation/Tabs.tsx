@@ -4,7 +4,6 @@ import EntypoIcons from 'react-native-vector-icons/Entypo';
 import {HomeScreenNavigator} from './HomeScreenNavigator';
 import {MessagesScreenNavigator} from './MessagesScreenNavigator';
 import I18n from '../i18n';
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 
 const Tab = createBottomTabNavigator();
