@@ -1,20 +1,17 @@
-import React, {FC} from 'react';
-import I18n from 'react-native-i18n';
-import {Button, TextInput} from 'react-native-paper';
-import {useNavigation} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
-import {LoginScreenContainer, Title} from './LoginNameScreenStyle';
-import {setLoginNameAC} from "../bll/loginNameReducer";
+import React, { FC } from 'react';
+import { Button, TextInput } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
+import { LoginScreenContainer, Title } from './LoginNameScreenStyle';
+import { setLoginNameAC } from '../bll/loginNameReducer';
+import I18n from '../../../i18n';
 
 
 export const NameScreen: FC = () => {
     const [name, setName] = React.useState('');
-    const navigation = useNavigation();
     const dispatch = useDispatch();
 
     const onPressBtnJoin = () => {
-        dispatch(setLoginNameAC({loginName: name}));
-        navigation.navigate('Tabs');
+        dispatch(setLoginNameAC({ loginName: name }));
     };
 
     return (

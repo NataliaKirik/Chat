@@ -14,7 +14,7 @@ import { KeyboardAwareFlatList, KeyboardAwareScrollView } from 'react-native-key
 export const ChatMessagesScreen: FC = () => {
     const [message, setMessage] = React.useState('');
     const dispatch = useDispatch();
-    const senderName = useSelector<AppRootStateType, string>(state => state.chatUserName.senderName);
+    const senderName = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
     const data = useSelector<AppRootStateType, Array<ChatUserDataType>>(state => state.chatMessages.data);
 
     useEffect(() => {

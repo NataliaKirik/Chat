@@ -3,6 +3,8 @@ import en from './locales/en';
 import ru from './locales/ru';
 
 I18n.fallbacks = true;
+I18n.defaultLocale = 'en';
+
 
 I18n.translations = {
     en,
