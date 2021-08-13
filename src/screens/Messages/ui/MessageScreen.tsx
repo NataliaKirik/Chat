@@ -12,10 +12,10 @@ import { DropShadowStyled } from './MessageScreenStyle';
 export const MessageScreen: FC = () => {
     const dispatch = useDispatch();
     const data = useSelector<AppRootStateType, Array<ForumUserDataType>>(state => state.forum.data);
-
+    const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
 
     useEffect(() => {
-        dispatch(getForumAllDataTC());
+        dispatch(getForumAllDataTC(username));
     }, [data, dispatch]);
 
     return (

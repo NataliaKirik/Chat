@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { commonAPI } from '../../../api/api';
+import { chatAPI } from '../../../api/api';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
@@ -23,7 +23,7 @@ export const { setLoginNameAC } = slice.actions;
 
 // thunk
 export const addChatUserDataTC = (loginName: string, message: string) => (dispatch: Dispatch) => {
-    commonAPI.addChatUserData(loginName, message)
+    chatAPI.addChatUserData(loginName, message)
         .then(res => {
             // dispatch(setLoginNameAC({loginName: res.data.loginName}));
         })

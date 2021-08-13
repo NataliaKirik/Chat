@@ -12,14 +12,33 @@ const instance = axios.create({
 // baseURLHome: 'http://10.0.2.2:8080/'
 
 
-export const commonAPI = {
-    getForumAllData() {
+export const forumAPI = {
+    getForumAllData(username: string) {
         return instance.get<ForumUserDataType[]>(`forum/all`, {
             headers: {
-                'X-User-Name': '123'
+                'X-User-Name': username
             }
         }).then(res => res.data);
     },
+    like(username: string, id: string) {
+        return instance.get<ForumUserDataType>(`forum/like`, {
+            headers: {
+                'X-User-Name': username,
+                id
+            }
+        }).then(res => res.data);
+    },
+    unlike(username: string, id: string) {
+        return instance.get<ForumUserDataType>(`forum/unlike`, {
+            headers: {
+                'X-User-Name': username,
+                id
+            }
+        }).then(res => res.data);
+    }
+};
+
+export const chatAPI = {
     addChatUserData(senderName: string, message: string) {
         return instance.post(`chat/add`, {
             senderName, receiverName: 'me', message
@@ -28,7 +47,6 @@ export const commonAPI = {
     getChatUserData() {
         return instance.get<ChatUserDataType[]>(`chat/all`).then(res => res.data);
     }
-
 };
 
 

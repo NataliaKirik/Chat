@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { ChatUserDataType, commonAPI } from '../../../api/api';
+import { chatAPI, ChatUserDataType } from '../../../api/api';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
@@ -21,7 +21,7 @@ const { setChatMessageDataAC } = slice.actions;
 
 // thunk
 export const getChatMessageDataTC = () => (dispatch: Dispatch) => {
-    commonAPI.getChatUserData()
+    chatAPI.getChatUserData()
         .then(res => {
             dispatch(setChatMessageDataAC({ arrayUsersData: res }));
         })

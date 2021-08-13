@@ -1,6 +1,6 @@
-import {Dispatch} from 'redux';
-import {commonAPI, ForumUserDataType} from '../../../api/api';
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { Dispatch } from 'redux';
+import { forumAPI, ForumUserDataType } from '../../../api/api';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
     data: []
@@ -16,13 +16,13 @@ const slice = createSlice({
     }
 });
 export const forumReducer = slice.reducer;
-const {setForumDataAC} = slice.actions;
+const { setForumDataAC } = slice.actions;
 
 // thunk
-export const getForumAllDataTC = () => (dispatch: Dispatch) => {
-    commonAPI.getForumAllData()
+export const getForumAllDataTC = (username: string) => (dispatch: Dispatch) => {
+    forumAPI.getForumAllData(username)
         .then(res => {
-            dispatch(setForumDataAC({arrayUsersData: res}));
+            dispatch(setForumDataAC({ arrayUsersData: res }));
         })
         .catch(e => {
             console.log(e);
