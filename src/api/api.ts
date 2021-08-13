@@ -1,8 +1,11 @@
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { AppRootStateType } from '../app/store';
 
 export const IP = 'http://192.168.100.7:8080';
 // export const IP = 'http://192.168.48.53:8080';
 // const IPHome = 'http://192.168.100.7:8080';
+
 
 const instance = axios.create({
     withCredentials: true,
@@ -21,18 +24,16 @@ export const forumAPI = {
         }).then(res => res.data);
     },
     like(username: string, id: string) {
-        return instance.get<ForumUserDataType>(`forum/like`, {
+        return instance.get<ForumUserDataType>(`forum/like/1`, {
             headers: {
-                'X-User-Name': username,
-                id
+                'X-User-Name': username
             }
         }).then(res => res.data);
     },
-    unlike(username: string, id: string) {
-        return instance.get<ForumUserDataType>(`forum/unlike`, {
+    unLike(username: string, id: string) {
+        return instance.get<ForumUserDataType>(`forum/unlike/1`, {
             headers: {
-                'X-User-Name': username,
-                id
+                'X-User-Name': username
             }
         }).then(res => res.data);
     }
