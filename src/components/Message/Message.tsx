@@ -13,30 +13,22 @@ import {
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import I18n from '../../i18n';
-import { IP } from '../../api/api';
+import { ForumUserDataType, IP } from '../../api/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { dislikeTC, likeTC } from '../../screens/Messages/bll/forumDataReducer';
 import { AppRootStateType } from '../../app/store';
 
-type MessagePropsType = {
-    date: string
-    like: boolean
-    owner: string
-    photo: {}
-    replies: number
-    title: string
-}
 
-export const Message = ({ date, like, owner, photo, replies, title }: MessagePropsType) => {
+export const Message = ({ date, like, owner, photo, replies, title, id }: ForumUserDataType) => {
     const navigation = useNavigation();
     const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
     const dispatch = useDispatch();
 
     const onLikePress = () => {
-        dispatch(likeTC(username, '1'));
+        dispatch(likeTC(username, id));
     };
     const onDislikePress = () => {
-        dispatch(dislikeTC(username, '1'));
+        dispatch(dislikeTC(username, id));
     };
 
     return (

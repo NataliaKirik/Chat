@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { AppRootStateType } from '../app/store';
 
 export const IP = 'http://192.168.100.7:8080';
 // export const IP = 'http://192.168.48.53:8080';
@@ -23,15 +21,15 @@ export const forumAPI = {
             }
         }).then(res => res.data);
     },
-    like(username: string, id: string) {
-        return instance.get<ForumUserDataType>(`forum/like/1`, {
+    like(username: string, id: number) {
+        return instance.get<ForumUserDataType>(`forum/like/${id}`, {
             headers: {
                 'X-User-Name': username
             }
         }).then(res => res.data);
     },
-    unLike(username: string, id: string) {
-        return instance.get<ForumUserDataType>(`forum/unlike/1`, {
+    unLike(username: string, id: number) {
+        return instance.get<ForumUserDataType>(`forum/unlike/${id}`, {
             headers: {
                 'X-User-Name': username
             }

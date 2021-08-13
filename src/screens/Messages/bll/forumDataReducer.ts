@@ -34,7 +34,7 @@ export const getForumAllDataTC = (username: string) => (dispatch: Dispatch) => {
             console.log(e);
         });
 };
-export const likeTC = (username: string, id: string) => (dispatch: Dispatch) => {
+export const likeTC = (username: string, id: number) => (dispatch: Dispatch) => {
     forumAPI.like(username, id)
         .then(res => {
             dispatch(likeAC({ user: res }));
@@ -43,7 +43,7 @@ export const likeTC = (username: string, id: string) => (dispatch: Dispatch) => 
             console.log(e);
         });
 };
-export const dislikeTC = (username: string, id: string) => (dispatch: Dispatch) => {
+export const dislikeTC = (username: string, id: number) => (dispatch: Dispatch) => {
     forumAPI.unLike(username, id)
         .then(res => {
             dispatch(likeAC({ user: res }));
