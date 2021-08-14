@@ -13,17 +13,21 @@ import {
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import I18n from '../../i18n';
-import { ForumUserDataType, IP } from '../../api/api';
+import { ForumDataType, IP } from '../../api/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { dislikeTC, likeTC } from '../../screens/Messages/bll/forumDataReducer';
 import { AppRootStateType } from '../../app/store';
+import { getChatDataTC } from '../../screens/Chat/bll/chatMessagesReducer';
 
-
-export const Message = ({ date, like, owner, photo, replies, title, id }: ForumUserDataType) => {
+export const Message = ({ date, like, owner, photo, replies, title, id }: ForumDataType) => {
     const navigation = useNavigation();
     const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
     const dispatch = useDispatch();
 
+    const onMessagePress = () => {
+        dispatch(getChatDataTC(username, id));
+        navigation.navigate(I18n.t('chatTab'));
+    };
     const onLikePress = () => {
         dispatch(likeTC(username, id));
     };
@@ -32,7 +36,7 @@ export const Message = ({ date, like, owner, photo, replies, title, id }: ForumU
     };
 
     return (
-        <TouchableOpacity onPress={() => navigation.navigate(I18n.t('chatTab'))}>
+        <TouchableOpacity onPress={onMessagePress}>
             <MessageContainer>
                 <Avatar source={{ uri: IP + photo }} />
                 <MainContainer>

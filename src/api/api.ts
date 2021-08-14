@@ -15,21 +15,21 @@ const instance = axios.create({
 
 export const forumAPI = {
     getForumAllData(username: string) {
-        return instance.get<ForumUserDataType[]>(`forum/all`, {
+        return instance.get<ForumDataType[]>(`forum/all`, {
             headers: {
                 'X-User-Name': username
             }
         }).then(res => res.data);
     },
     like(username: string, id: number) {
-        return instance.get<ForumUserDataType>(`forum/like/${id}`, {
+        return instance.get<ForumDataType>(`forum/like/${id}`, {
             headers: {
                 'X-User-Name': username
             }
         }).then(res => res.data);
     },
     unLike(username: string, id: number) {
-        return instance.get<ForumUserDataType>(`forum/unlike/${id}`, {
+        return instance.get<ForumDataType>(`forum/unlike/${id}`, {
             headers: {
                 'X-User-Name': username
             }
@@ -38,19 +38,27 @@ export const forumAPI = {
 };
 
 export const chatAPI = {
-    addChatUserData(senderName: string, message: string) {
+    addChatUserData(forumId: number, receiverName: string, message: string, username: string) {
         return instance.post(`chat/add`, {
-            senderName, receiverName: 'me', message
+            forumId, receiverName, message
+        }, {
+            headers: {
+                'X-User-Name': username
+            }
         });
     },
-    getChatUserData() {
-        return instance.get<ChatUserDataType[]>(`chat/all`).then(res => res.data);
+    getChatUserData(username: string, forumID: number) {
+        return instance.get<ChatDataType[]>(`chat/all/${forumID}`, {
+            headers: {
+                'X-User-Name': username
+            }
+        }).then(res => res.data);
     }
 };
 
 
 //types
-export type ForumUserDataType = {
+export type ForumDataType = {
     id: number
     title: string
     photo: string
@@ -59,10 +67,12 @@ export type ForumUserDataType = {
     date: string
     like: boolean
 }
-export type ChatUserDataType = {
+export type ChatDataType = {
+    id: string
+    forumId: number
     senderName: string
     receiverName: string
     message: string
-    id: string
     date: string
 }
+

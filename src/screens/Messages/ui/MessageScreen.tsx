@@ -5,13 +5,13 @@ import { Message } from '../../../components/Message/Message';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppRootStateType } from '../../../app/store';
 import { getForumAllDataTC } from '../bll/forumDataReducer';
-import { ForumUserDataType } from '../../../api/api';
+import { ForumDataType } from '../../../api/api';
 import { DropShadowStyled } from './MessageScreenStyle';
 
 
 export const MessageScreen: FC = () => {
     const dispatch = useDispatch();
-    const data = useSelector<AppRootStateType, Array<ForumUserDataType>>(state => state.forum.data);
+    const data = useSelector<AppRootStateType, Array<ForumDataType>>(state => state.forum.data);
     const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
 
     useEffect(() => {

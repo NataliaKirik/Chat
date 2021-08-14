@@ -1,28 +1,22 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import I18n from 'react-native-i18n';
-import { useDispatch, useSelector } from 'react-redux';
-import { addChatUserDataTC } from '../../Login/bll/loginNameReducer';
+import { useSelector } from 'react-redux';
 import { AppRootStateType } from '../../../app/store';
 import { ChatMessage } from '../../../components/ChatMessage/ChatMessage';
-import { getChatMessageDataTC } from '../bll/chatMessagesReducer';
 import { AntDesignStyled, ButtonStyled, InputAndButtonContainer, TextInputStyled } from './ChatMessagesScreenStyle';
-import { ChatUserDataType } from '../../../api/api';
+import { ChatDataType } from '../../../api/api';
 import { KeyboardAwareFlatList, KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { addChatData } from '../bll/chatMessagesReducer';
 
 
 export const ChatMessagesScreen: FC = () => {
     const [message, setMessage] = React.useState('');
-    const dispatch = useDispatch();
     const senderName = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
-    const data = useSelector<AppRootStateType, Array<ChatUserDataType>>(state => state.chatMessages.data);
-
-    useEffect(() => {
-        dispatch(getChatMessageDataTC());
-    }, [data, dispatch]);
+    const data = useSelector<AppRootStateType, Array<ChatDataType>>(state => state.chatMessages.data);
 
     const onPressBtnSend = () => {
-        dispatch(addChatUserDataTC(senderName, message));
+        addChatData(1, 'Zephor', message, senderName);
         setMessage('');
     };
 

@@ -1,5 +1,3 @@
-import { Dispatch } from 'redux';
-import { chatAPI } from '../../../api/api';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
@@ -20,18 +18,6 @@ const slice = createSlice({
 });
 export const loginNameReducer = slice.reducer;
 export const { setLoginNameAC } = slice.actions;
-
-// thunk
-export const addChatUserDataTC = (loginName: string, message: string) => (dispatch: Dispatch) => {
-    chatAPI.addChatUserData(loginName, message)
-        .then(res => {
-            // dispatch(setLoginNameAC({loginName: res.data.loginName}));
-        })
-        .catch(e => {
-            console.log('error: ', e);
-        });
-};
-
 
 //types
 type InitialStateType = {
