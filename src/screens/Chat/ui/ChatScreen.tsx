@@ -1,22 +1,41 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import I18n from 'react-native-i18n';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppRootStateType } from '../../../app/store';
 import { ChatMessage } from '../../../components/ChatMessage/ChatMessage';
 import { AntDesignStyled, ButtonStyled, InputAndButtonContainer, TextInputStyled } from './ChatMessagesScreenStyle';
 import { ChatDataType } from '../../../api/api';
 import { KeyboardAwareFlatList, KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { addChatData } from '../bll/chatMessagesReducer';
+import { addChatData, getChatDataTC } from '../bll/chatMessagesReducer';
+
+type PropsType = {
+    navigation: {}
+    route: {
+        key: string
+        name: string
+        params: {
+            id: number
+            owner: string
+        }
+    }
+};  //?
 
 
-export const ChatMessagesScreen: FC = () => {
+export const ChatScreen: FC<PropsType> = ({ route }) => {
     const [message, setMessage] = React.useState('');
+    const dispatch = useDispatch();
     const senderName = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
     const data = useSelector<AppRootStateType, Array<ChatDataType>>(state => state.chatMessages.data);
+    const { id } = route.params;
+    const receiverName = route.params.owner;
+
+    useEffect(() => {
+        dispatch(getChatDataTC(senderName, id));
+    }, [data]);
 
     const onPressBtnSend = () => {
-        addChatData(1, 'Zephor', message, senderName);
+        addChatData(id, receiverName, message, senderName);
         setMessage('');
     };
 
@@ -58,5 +77,6 @@ const styles = StyleSheet.create({
     },
     contentContainerStyle: {}
 });
+
 
 

@@ -17,7 +17,6 @@ import { ForumDataType, IP } from '../../api/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { dislikeTC, likeTC } from '../../screens/Messages/bll/forumDataReducer';
 import { AppRootStateType } from '../../app/store';
-import { getChatDataTC } from '../../screens/Chat/bll/chatMessagesReducer';
 
 export const Message = ({ date, like, owner, photo, replies, title, id }: ForumDataType) => {
     const navigation = useNavigation();
@@ -25,8 +24,7 @@ export const Message = ({ date, like, owner, photo, replies, title, id }: ForumD
     const dispatch = useDispatch();
 
     const onMessagePress = () => {
-        dispatch(getChatDataTC(username, id));
-        navigation.navigate(I18n.t('chatTab'));
+        navigation.navigate(I18n.t('chatTab'), { id ,owner});
     };
     const onLikePress = () => {
         dispatch(likeTC(username, id));
