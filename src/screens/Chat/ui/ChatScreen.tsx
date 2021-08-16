@@ -1,13 +1,13 @@
-import React, { FC, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, {FC, useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
 import I18n from 'react-native-i18n';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppRootStateType } from '../../../app/store';
-import { ChatMessage } from '../../../components/ChatMessage/ChatMessage';
-import { AntDesignStyled, ButtonStyled, InputAndButtonContainer, TextInputStyled } from './ChatMessagesScreenStyle';
-import { ChatDataType } from '../../../api/api';
-import { KeyboardAwareFlatList, KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { addChatData, getChatDataTC } from '../bll/chatMessagesReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType} from '../../../app/store';
+import {ChatMessage} from '../../../components/ChatMessage/ChatMessage';
+import {AntDesignStyled, ButtonStyled, InputAndButtonContainer, TextInputStyled} from './ChatMessagesScreenStyle';
+import {ChatDataType} from '../../../api/api';
+import {KeyboardAwareFlatList, KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {addChatData, getChatDataTC} from '../bll/chatMessagesReducer';
 
 type PropsType = {
     navigation: {}
@@ -22,12 +22,12 @@ type PropsType = {
 };  //?
 
 
-export const ChatScreen: FC<PropsType> = ({ route }) => {
+export const ChatScreen: FC<PropsType> = ({route}) => {
     const [message, setMessage] = React.useState('');
     const dispatch = useDispatch();
     const senderName = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
     const data = useSelector<AppRootStateType, Array<ChatDataType>>(state => state.chatMessages.data);
-    const { id } = route.params;
+    const {id} = route.params;
     const receiverName = route.params.owner;
 
     useEffect(() => {
@@ -45,8 +45,8 @@ export const ChatScreen: FC<PropsType> = ({ route }) => {
             <View>
                 <KeyboardAwareFlatList
                     data={data}
-                    renderItem={({ item }) => (
-                        <ChatMessage {...item} />
+                    renderItem={({item}) => (
+                        <ChatMessage {...item}/>
                     )}
                     keyExtractor={(_, index) => 'List-' + index}
                 />
@@ -59,7 +59,7 @@ export const ChatScreen: FC<PropsType> = ({ route }) => {
                     placeholder={I18n.t('chatInputMessage')}
                 />
                 <ButtonStyled mode="contained" onPress={onPressBtnSend}>
-                    <AntDesignStyled name={'caretright'} />
+                    <AntDesignStyled name={'caretright'}/>
                 </ButtonStyled>
             </InputAndButtonContainer>
         </KeyboardAwareScrollView>
