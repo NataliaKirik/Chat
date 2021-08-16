@@ -1,6 +1,6 @@
 export default {
     headerButtonBack: 'Назад',
-    greeting: 'Привет!',
+    greeting: 'Привет',
     tabFriends: 'Друзья',
     tabFeedBack: 'Форма обратной связи',
     tabHome: 'Главный экран',
@@ -20,5 +20,5 @@ export default {
     chatTitle: 'Ваше имя?',
     chatInputTitle: 'введите ваше имя',
     chatButton: 'Присоединиться',
-    chatInputMessage:'Введите ваше сообщение'
+    chatInputMessage: 'Введите ваше сообщение'
 }

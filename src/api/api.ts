@@ -12,6 +12,7 @@ const instance = axios.create({
 // baseURL: 'http://localhost:8080/'
 // baseURLHome: 'http://10.0.2.2:8080/'
 
+// instance.defaults.headers['X-User-Name'] = "";
 
 export const forumAPI = {
     getForumAllData(username: string) {

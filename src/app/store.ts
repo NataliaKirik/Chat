@@ -2,11 +2,11 @@ import {combineReducers} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {forumReducer} from '../screens/Messages/bll/forumDataReducer';
 import {configureStore} from '@reduxjs/toolkit';
-import {chatMessageDataReducer} from '../screens/Chat/bll/chatMessagesReducer';
-import {loginNameReducer} from "../screens/Login/bll/loginNameReducer";
+import {chatMessageDataReducer} from '../screens/Chat/bll/chatReducer';
+import {loginReducer} from "../screens/Login/bll/loginReducer";
 
 const rootReducer = combineReducers({
-    loginName: loginNameReducer,
+    loginName: loginReducer,
     forum: forumReducer,
     chatMessages: chatMessageDataReducer
 });

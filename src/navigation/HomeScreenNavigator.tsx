@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
-import { HomeScreen } from '../screens/Home/HomeScreen';
+import { HomeScreen } from '../screens/Home';
 import { FeedBackScreen } from '../screens/FeedBackScreen';
 import { FriendScreen } from '../screens/FriendsScreen';
 import I18n from '../i18n';

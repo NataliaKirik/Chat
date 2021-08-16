@@ -9,7 +9,7 @@ import {
     MessageReplies,
     MessageTitle,
     UserName
-} from './MessageStyledConst';
+} from './style';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import I18n from '../../i18n';

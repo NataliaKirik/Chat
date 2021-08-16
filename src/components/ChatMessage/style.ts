@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import {primaryRed} from "../../common/styles/colors";
 
 
 export const MainContainer = styled.View`
@@ -17,5 +18,5 @@ export const UserNameContainer = styled.View`
   flex-direction: row;
 `;
 export const Mention = styled.Text`
-  color: red
+  color: ${primaryRed}
 `;

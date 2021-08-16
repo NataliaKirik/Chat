@@ -1,13 +1,19 @@
 import React, {FC, useEffect} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import I18n from 'react-native-i18n';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from '../../../app/store';
-import {ChatMessage} from '../../../components/ChatMessage/ChatMessage';
-import {AntDesignStyled, ButtonStyled, InputAndButtonContainer, TextInputStyled} from './ChatMessagesScreenStyle';
+import {ChatMessage} from '../../../components/ChatMessage';
+import {
+    AntDesignStyled,
+    ButtonStyled,
+    InputAndButtonContainer,
+    KeyboardAwareSVStyled,
+    TextInputStyled
+} from './style';
 import {ChatDataType} from '../../../api/api';
-import {KeyboardAwareFlatList, KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-import {addChatData, getChatDataTC} from '../bll/chatMessagesReducer';
+import {KeyboardAwareFlatList} from 'react-native-keyboard-aware-scroll-view';
+import {addChatData, getChatDataTC} from '../bll/chatReducer';
 
 type PropsType = {
     navigation: {}
@@ -40,8 +46,8 @@ export const ChatScreen: FC<PropsType> = ({route}) => {
     };
 
     return (
-        <KeyboardAwareScrollView style={styles.container} extraHeight={90}
-                                 contentContainerStyle={styles.contentContainerStyle} enableOnAndroid={true}>
+        <KeyboardAwareSVStyled extraHeight={90}
+                               enableOnAndroid={true}>
             <View>
                 <KeyboardAwareFlatList
                     data={data}
@@ -62,21 +68,9 @@ export const ChatScreen: FC<PropsType> = ({route}) => {
                     <AntDesignStyled name={'caretright'}/>
                 </ButtonStyled>
             </InputAndButtonContainer>
-        </KeyboardAwareScrollView>
-
+        </KeyboardAwareSVStyled>
     );
 };
-
-const styles = StyleSheet.create({
-    mainView: {
-        flex: 1,
-        justifyContent: 'space-between'
-    },
-    container: {
-        flex: 1
-    },
-    contentContainerStyle: {}
-});
 
 
 

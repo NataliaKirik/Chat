@@ -1,12 +1,19 @@
 import React, {FC} from "react";
-import {Button, Text} from "react-native";
-import styled from 'styled-components/native'
+import {Button} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import I18n from '../../i18n';
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../app/store";
+import {
+    HomeScreenContainer,
+    ButtonsContainer,
+    GreetingText, GreetingContainer
+} from "./style"
 
 
 export const HomeScreen: FC = () => {
     const navigation = useNavigation();
+    const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
 
     return (
         <HomeScreenContainer>
@@ -22,28 +29,9 @@ export const HomeScreen: FC = () => {
             </ButtonsContainer>
             <GreetingContainer>
                 <GreetingText>
-                    {I18n.t('greeting')}
+                    {I18n.t('greeting')}, {username}!
                 </GreetingText>
             </GreetingContainer>
         </HomeScreenContainer>
     );
 };
-
-const HomeScreenContainer = styled.SafeAreaView`
-  flex: 1;
-  justify-content: space-between;
-`;
-const ButtonsContainer = styled.View`
-  flex-direction: row;
-  justify-content: space-evenly;
-
-`;
-const GreetingContainer = styled.View`
-  align-items: center;
-  align-content: center;
-  height: 50%;
-`;
-const GreetingText = styled.Text`
-  font-size: 30px;
-  color: #df245e;
-`;

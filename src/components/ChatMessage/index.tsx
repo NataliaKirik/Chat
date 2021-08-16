@@ -1,9 +1,11 @@
 import React from 'react';
-import {Date, MessageContainer, MessageTitle} from '../Message/MessageStyledConst';
-import {MainContainer, UserName, UserNameContainer} from './ChatMessageStyledConst';
+import {Date, MessageContainer, MessageTitle} from '../Message/style';
+import {MainContainer, UserName, UserNameContainer} from './style';
 import {primaryRed} from '../../common/styles/colors';
 import {Text} from 'react-native';
 import dateFormatter from 'date-format-conversion';
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../app/store";
 
 
 type PropsType = {
@@ -13,12 +15,13 @@ type PropsType = {
 }
 
 export const ChatMessage = ({senderName, message, date}: PropsType) => {
-    // /(^|[^@\w+])@(\w{1,15})\b/g
     // /@(\w+)/g
-    const regex = new RegExp(`@(${senderName})`)
+    const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
+    const regex = new RegExp(`@(${username})`, 'i')
     const reactStringReplace = require('react-string-replace')
-    const result = reactStringReplace(message, regex, (match: string, i: number) => <Text key={i}
-                                                                                          style={{color: primaryRed}}>@{match}</Text>)
+    const result = reactStringReplace(message, regex, (match: string, i: number) =>
+        <Text key={i}
+              style={{color: primaryRed}}>@{match}</Text>)
 
     return (
         <MessageContainer>

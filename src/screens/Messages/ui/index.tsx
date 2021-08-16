@@ -1,12 +1,12 @@
 import React, { FC, useEffect } from 'react';
 import { FlatList, SafeAreaView } from 'react-native';
 import DropShadow from 'react-native-drop-shadow';
-import { Message } from '../../../components/Message/Message';
+import { Message } from '../../../components/Message';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppRootStateType } from '../../../app/store';
 import { getForumAllDataTC } from '../bll/forumDataReducer';
 import { ForumDataType } from '../../../api/api';
-import { DropShadowStyled } from './MessageScreenStyle';
+import { DropShadowStyled } from './style';
 
 
 export const MessageScreen: FC = () => {

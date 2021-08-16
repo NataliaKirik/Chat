@@ -1,6 +1,7 @@
 import styled from "styled-components/native";
 import {Button, TextInput} from "react-native-paper";
 import AntDesign from "react-native-vector-icons/AntDesign";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 
 export const ChatScreenContainer = styled.View`
   flex: 1;
@@ -20,4 +21,7 @@ export const AntDesignStyled = styled(AntDesign)`
 export const ButtonStyled = styled(Button)`
   justify-content: center;
   width: 15%;
+`;
+export const KeyboardAwareSVStyled = styled(KeyboardAwareScrollView)`
+  flex: 1;
 `;

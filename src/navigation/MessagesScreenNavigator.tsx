@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { MessageScreen } from '../screens/Messages/ui/MessageScreen';
+import { MessageScreen } from '../screens/Messages/ui';
 import I18n from '../i18n';
-import { ChatScreen } from '../screens/Chat/ui/ChatScreen';
-import { Message } from '../components/Message/Message';
+import { ChatScreen } from '../screens/Chat/ui';
+import { Message } from '../components/Message';
 
 
 const Stack = createStackNavigator();

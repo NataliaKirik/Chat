@@ -16,7 +16,7 @@ const slice = createSlice({
         }
     }
 });
-export const loginNameReducer = slice.reducer;
+export const loginReducer = slice.reducer;
 export const { setLoginNameAC } = slice.actions;
 
 //types

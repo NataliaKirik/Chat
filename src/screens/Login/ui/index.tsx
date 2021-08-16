@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Button, TextInput } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
-import { LoginScreenContainer, Title } from './LoginNameScreenStyle';
-import { setLoginNameAC } from '../bll/loginNameReducer';
+import { LoginScreenContainer, Title } from './style';
+import { setLoginNameAC } from '../bll/loginReducer';
 import I18n from '../../../i18n';
 
 
