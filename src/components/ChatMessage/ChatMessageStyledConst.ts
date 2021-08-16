@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 
 export const MainContainer = styled.View`
@@ -15,4 +15,7 @@ export const UserName = styled.Text<{ color?: string }>`
 
 export const UserNameContainer = styled.View`
   flex-direction: row;
+`;
+export const Mention = styled.Text`
+  color: red
 `;
