@@ -25,19 +25,13 @@ export const getChatDataTC = (username: string, forumID: number) => (dispatch: D
         .then(res => {
             dispatch(setChatDataAC({ arrayUsersData: res }));
         })
-        .catch(e => {
-            console.log('error: ', e);
-        });
+        .catch(e => console.log(e));
 };
 
 export const addChatData = (forumId: number, receiverName: string, message: string, username: string) => {
     chatAPI.addChatUserData(forumId, receiverName, message, username)
-        .then(res => {
-            return console.log(res);
-        })
-        .catch(e => {
-            return console.log(e);
-        });
+        .then(res => console.log(res))
+        .catch(e => console.log(e));
 };
 
 

@@ -1,6 +1,6 @@
-import {Dispatch} from 'redux';
-import {forumAPI, ForumDataType} from '../../../api/api';
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { Dispatch } from 'redux';
+import { forumAPI, ForumDataType } from '../../../api/api';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
     data: []
@@ -21,43 +21,30 @@ const slice = createSlice({
     }
 });
 export const forumReducer = slice.reducer;
-const {setForumDataAC} = slice.actions;
-const {likeAC} = slice.actions;
+const { setForumDataAC } = slice.actions;
+const { likeAC } = slice.actions;
 
 // thunk
 export const getForumAllDataTC = (username: string) => (dispatch: Dispatch) => {
     forumAPI.getForumAllData(username)
         .then(res => {
-            if (res) {
-                dispatch(setForumDataAC({arrayUsersData: res}));
-            }
+            dispatch(setForumDataAC({ arrayUsersData: res }));
         })
-        .catch(e => {
-            console.log(e);
-        });
+        .catch(e => console.log(e));
 };
 export const likeTC = (username: string, id: number) => (dispatch: Dispatch) => {
     forumAPI.like(username, id)
         .then(res => {
-            if (res) {
-                dispatch(likeAC({user: res}));
-            }
+            dispatch(likeAC({ user: res }));
         })
-        .catch(e => {
-            console.log(e);
-        });
+        .catch(e => console.log(e));
 };
 export const dislikeTC = (username: string, id: number) => (dispatch: Dispatch) => {
     forumAPI.unLike(username, id)
         .then(res => {
-            if (res) {
-                dispatch(likeAC({user: res}));
-
-            }
+            dispatch(likeAC({ user: res }));
         })
-        .catch(e => {
-            console.log(e);
-        });
+        .catch(e => console.log(e));
 };
 
 

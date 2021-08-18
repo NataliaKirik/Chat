@@ -15,7 +15,6 @@ type PropsType = {
 }
 
 export const ChatMessage = ({senderName, message, date}: PropsType) => {
-    // /@(\w+)/g
     const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
     const regex = new RegExp(`@(${username})`, 'i')
     const reactStringReplace = require('react-string-replace')
