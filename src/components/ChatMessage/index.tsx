@@ -4,8 +4,7 @@ import {MainContainer, UserName, UserNameContainer} from './style';
 import {primaryRed} from '../../common/styles/colors';
 import {Text} from 'react-native';
 import dateFormatter from 'date-format-conversion';
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../app/store";
+import {getUsername} from "../../app/asyncStore";
 
 
 type PropsType = {
@@ -15,7 +14,7 @@ type PropsType = {
 }
 
 export const ChatMessage = ({senderName, message, date}: PropsType) => {
-    const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
+    const username = getUsername();
     const regex = new RegExp(`@(${username})`, 'i')
     const reactStringReplace = require('react-string-replace')
     const result = reactStringReplace(message, regex, (match: string, i: number) =>

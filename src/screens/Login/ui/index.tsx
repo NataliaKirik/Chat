@@ -1,17 +1,15 @@
-import React, { FC } from 'react';
-import { Button, TextInput } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
-import { LoginScreenContainer, Title } from './style';
-import { setLoginNameAC } from '../bll/loginReducer';
+import React, {FC} from 'react';
+import {Button, TextInput} from 'react-native-paper';
+import {LoginScreenContainer, Title} from './style';
 import I18n from '../../../i18n';
+import {storeUsername} from "../../../app/asyncStore";
 
 
-export const NameScreen: FC = () => {
+export const LoginScreen: FC = () => {
     const [name, setName] = React.useState('');
-    const dispatch = useDispatch();
 
     const onPressBtnJoin = () => {
-        dispatch(setLoginNameAC({ loginName: name }));
+        storeUsername(name);
     };
 
     return (

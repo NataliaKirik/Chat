@@ -2,18 +2,13 @@ import React, {FC} from "react";
 import {Button} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import I18n from '../../i18n';
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "../../app/store";
-import {
-    HomeScreenContainer,
-    ButtonsContainer,
-    GreetingText, GreetingContainer
-} from "./style"
+import {ButtonsContainer, GreetingContainer, GreetingText, HomeScreenContainer} from "./style"
+import {getUsername} from "../../app/asyncStore";
 
 
 export const HomeScreen: FC = () => {
     const navigation = useNavigation();
-    const username = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
+    const username = getUsername();
 
     return (
         <HomeScreenContainer>

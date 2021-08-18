@@ -2,13 +2,11 @@ import {combineReducers} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {forumReducer} from '../screens/Messages/bll/forumDataReducer';
 import {configureStore} from '@reduxjs/toolkit';
-import {chatMessageDataReducer} from '../screens/Chat/bll/chatReducer';
-import {loginReducer} from "../screens/Login/bll/loginReducer";
+import {chatReducer} from '../screens/Chat/bll/chatReducer';
 
 const rootReducer = combineReducers({
-    loginName: loginReducer,
     forum: forumReducer,
-    chatMessages: chatMessageDataReducer
+    chatMessages: chatReducer
 });
 
 export const store = configureStore({

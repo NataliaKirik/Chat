@@ -31,17 +31,16 @@ type PropsType = {
 export const ChatScreen: FC<PropsType> = ({route}) => {
     const [message, setMessage] = React.useState('');
     const dispatch = useDispatch();
-    const senderName = useSelector<AppRootStateType, string>(state => state.loginName.loginName);
     const data = useSelector<AppRootStateType, Array<ChatDataType>>(state => state.chatMessages.data);
     const {id} = route.params;
     const receiverName = route.params.owner;
 
     useEffect(() => {
-        dispatch(getChatDataTC(senderName, id));
+        dispatch(getChatDataTC(id));
     }, [data]);
 
     const onPressBtnSend = () => {
-        addChatData(id, receiverName, message, senderName);
+        addChatData(id, receiverName, message);
         setMessage('');
     };
 

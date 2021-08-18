@@ -1,6 +1,6 @@
-import { Dispatch } from 'redux';
-import { chatAPI, ChatDataType } from '../../../api/api';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {Dispatch} from 'redux';
+import {chatAPI, ChatDataType} from '../../../api/api';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
     data: []
@@ -15,23 +15,21 @@ const slice = createSlice({
         }
     }
 });
-export const chatMessageDataReducer = slice.reducer;
-const { setChatDataAC } = slice.actions;
+export const chatReducer = slice.reducer;
+const {setChatDataAC} = slice.actions;
 
 
 // thunk
-export const getChatDataTC = (username: string, forumID: number) => (dispatch: Dispatch) => {
-    chatAPI.getChatUserData(username, forumID)
+export const getChatDataTC = (forumId: number) => (dispatch: Dispatch) => {
+    chatAPI.getChatUserData(forumId)
         .then(res => {
-            dispatch(setChatDataAC({ arrayUsersData: res }));
+            dispatch(setChatDataAC({arrayUsersData: res}));
         })
         .catch(e => console.log(e));
 };
 
-export const addChatData = (forumId: number, receiverName: string, message: string, username: string) => {
-    chatAPI.addChatUserData(forumId, receiverName, message, username)
-        .then(res => console.log(res))
-        .catch(e => console.log(e));
+export const addChatData = (forumId: number, receiverName: string, message: string) => {
+    chatAPI.addChatUserData(forumId, receiverName, message).catch(e => console.log(e))
 };
 
 

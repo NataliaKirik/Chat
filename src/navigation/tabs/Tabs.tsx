@@ -39,8 +39,3 @@ export const Tabs: FC = () => {
     );
 };
 
-
-type RootStackParamList = {
-    Home: undefined;
-    Messages: undefined;
-};
