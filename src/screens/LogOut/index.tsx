@@ -12,7 +12,7 @@ export const Logout = () => {
                     onPress={() => {
                         deleteUsername()
                         // redraw app
-                        dispatch(setLocation('login'));
+                        // dispatch(setLocation('login'));
                     }}/>
         </ScreenWrapper>
     )

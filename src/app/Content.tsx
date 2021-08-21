@@ -1,34 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {LoginScreen} from '../screens/Login/ui';
-import {Tabs} from '../navigation/tabs/Tabs';
-import {NavigationContainer} from '@react-navigation/native';
-import {getUsername} from "./asyncStore";
-import {Text} from "react-native";
-import {Logout} from "../screens/LogOut";
+import React from 'react';
+import { LoginScreen } from '../screens/Login/ui';
+import { useSelector } from 'react-redux';
+import { AppRootStateType } from './store';
+import { NavigationContainer } from '@react-navigation/native';
+import { Tabs } from '../navigation/tabs/Tabs';
 
 
 export const Content = () => {
-    //const [loginName, setLoginName] = useState<any>();
-    const location = useSelector(getLocation);
+    const location = useSelector<AppRootStateType, string>((state) => state.content.location);
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            let userName = await getUsername();
-            dispatch(setLocation('app'));
-            //setLoginName(userName)
-        }
-
-        fetchUser();
-    }, [])
-
-    if (location === 'login') {
-        return <LoginScreen/>;
-    } else if (location === 'register') {
-        return <LoginScreen/>;
+    if (location === 'app') {
+        return <NavigationContainer>
+            <Tabs />
+        </NavigationContainer>;
     } else {
-        // return <NavigationContainer>
-        //     <Tabs/>
-        // </NavigationContainer>;
-        return <Logout/>
+        return <LoginScreen />;
     }
 };

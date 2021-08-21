@@ -1,12 +1,14 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import {forumReducer} from '../screens/Messages/bll/forumDataReducer';
-import {configureStore} from '@reduxjs/toolkit';
-import {chatReducer} from '../screens/Chat/bll/chatReducer';
+import { forumReducer } from '../screens/Messages/bll/forumDataReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import { chatReducer } from '../screens/Chat/bll/chatReducer';
+import { contentReducer } from './bll/contentReducer';
 
 const rootReducer = combineReducers({
     forum: forumReducer,
-    chatMessages: chatReducer
+    chatMessages: chatReducer,
+    content: contentReducer
 });
 
 export const store = configureStore({
