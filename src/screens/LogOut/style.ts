@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 
 export const ScreenWrapper = styled.View`
@@ -7,5 +7,10 @@ export const ScreenWrapper = styled.View`
   align-items: center;
 `;
 export const TextStyled = styled.Text`
-
+  font-family: "IndieFlower-Regular";
 `;
+export const ImageStyled = styled.Image`
+  width: 200px;
+  height: 200px;
+`;
+

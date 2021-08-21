@@ -4,6 +4,7 @@ import EntypoIcons from 'react-native-vector-icons/Entypo';
 import { HomeScreenNavigator } from '../HomeScreenNavigator';
 import { MessagesScreenNavigator } from '../MessagesScreenNavigator';
 import I18n from '../../i18n';
+import { Logout } from '../../screens/LogOut';
 
 
 export const Tabs: FC = () => {
@@ -14,12 +15,14 @@ export const Tabs: FC = () => {
         tabBarIcon: ({ color, size }: any) => {
             if (route.name === tabHomeName) {
                 return <EntypoIcons name={'home'} size={size} color={color} />;
-
             } else if (route.name === tabMessagesName) {
                 return <EntypoIcons name={'message'} size={size} color={color} />;
+            } else if (route.name === 'Logout') {
+                return <EntypoIcons name={'log-out'} size={size} color={color} />;
             }
         }
     });
+
     const tabBarOptions = {
         activeTintColor: '#df245e',
         inactiveTintColor: 'gray',
@@ -35,6 +38,7 @@ export const Tabs: FC = () => {
                        initialRouteName={tabHomeName}>
             <Tab.Screen name={tabHomeName} component={HomeScreenNavigator} />
             <Tab.Screen name={tabMessagesName} component={MessagesScreenNavigator} />
+            <Tab.Screen name={'Logout'} component={Logout} />
         </Tab.Navigator>
     );
 };
