@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { Button, View } from 'react-native';
-import { ImageStyled, ScreenWrapper, TextStyled } from './style';
+import { ButtonsWrap, ImageAndTextWrap, ImageStyled, ScreenWrapper, Text, TextStyled } from './style';
 import { deleteUsername, getUsername } from '../../app/asyncStore';
 import { useDispatch } from 'react-redux';
 import { setLocationAC } from '../../app/bll/contentReducer';
+import { Button } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 
 export const Logout = () => {
     const dispatch = useDispatch();
+    const navigation = useNavigation();
     const onPressLogout = async () => {
         await deleteUsername();
         dispatch(setLocationAC({ location: '' }));
@@ -21,12 +23,20 @@ export const Logout = () => {
 
     return (
         <ScreenWrapper>
-            <View style={{ flexDirection: 'row' }}>
+            <ImageAndTextWrap>
                 <ImageStyled source={require('../../assets/images/byeCat.png')} />
-                <TextStyled>Bye,{user} dkjnvdkjnvkdfkvndkfn</TextStyled>
-            </View>
-            <Button title={'Logout'}
-                    onPress={onPressLogout} />
+                <TextStyled>
+                    <Text>Bye,{'\n'}{user}</Text>
+                </TextStyled>
+            </ImageAndTextWrap>
+            <ButtonsWrap>
+                <Button color={'dimgrey'} mode="contained" onPress={onPressLogout}>
+                    Logout
+                </Button>
+                <Button color={'dimgrey'} mode="contained" onPress={() => navigation.navigate('FeedBack Form')}>
+                    Send feedback
+                </Button>
+            </ButtonsWrap>
         </ScreenWrapper>
     );
 };
