@@ -16,8 +16,6 @@ export const TextStyled = styled.View`
 export const Text = styled.Text`
   font-size: 23px;
   color: dimgrey;
-  font-family: "IndieFlower-Regular";
-
 `;
 export const ImageStyled = styled.Image`
   width: 200px;
