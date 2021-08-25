@@ -1,23 +1,23 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 const initialState: InitialStateType = {
-    location: ''
+    screen: ''
 };
 
 const slice = createSlice({
     name: 'contentReducer',
     initialState: initialState,
     reducers: {
-        setLocationAC(state: InitialStateType, action: PayloadAction<{ location: string }>) {
-            state.location = action.payload.location;
+        setLocationAC(state: InitialStateType, action: PayloadAction<{ screen: string }>) {
+            state.screen = action.payload.screen;
         }
     }
 });
 export const contentReducer = slice.reducer;
-export const { setLocationAC } = slice.actions;
+export const {setLocationAC} = slice.actions;
 
 
 //types
 type InitialStateType = {
-    location: string
+    screen: string
 }

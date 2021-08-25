@@ -22,19 +22,20 @@ export const LoginScreen: FC = () => {
 
     GoogleSignin.configure({
         webClientId: '773868382019-87h2nk10fo8106if8q3evdic2dcau4jt.apps.googleusercontent.com',
-        offlineAccess: false
-
     });
+
     const signIn = async () => {
         try {
             await GoogleSignin.hasPlayServices();
             const userInfo = await GoogleSignin.signIn();
             setUserGoogleInfo(userInfo);
-            await storeUsername(userGoogleInfo.user.name);
-            dispatch(setLocationAC({location: 'app'}));
+            storeUsername(userGoogleInfo.user.givenName);
+            dispatch(setLocationAC({screen: 'app'}));
         } catch (error) {
             console.log(error.message);
         }
+        storeUsername(userGoogleInfo.user.givenName);
+        dispatch(setLocationAC({screen: 'app'}));
     };
 
     return (
@@ -65,7 +66,7 @@ export const LoginScreen: FC = () => {
                 <ButtonPressStyled mode="outlined" onPress={
                     handleSubmit(async (data) => {
                         await storeUsername(data.name)
-                        dispatch(setLocationAC({location: 'app'}));
+                        dispatch(setLocationAC({screen: 'app'}));
                     })
                 }>
                     {I18n.t('chatButton')}

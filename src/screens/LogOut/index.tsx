@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { ButtonsWrap, ImageAndTextWrap, ImageStyled, ScreenWrapper, Text, TextStyled } from './style';
-import { deleteUsername, getUsername } from '../../app/asyncStore';
-import { useDispatch } from 'react-redux';
-import { setLocationAC } from '../../app/bll/contentReducer';
-import { Button } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
+import React, {useState} from 'react';
+import {ButtonsWrap, ImageAndTextWrap, ImageStyled, ScreenWrapper, Text, TextStyled} from './style';
+import {deleteUsername, getUsername} from '../../app/asyncStore';
+import {useDispatch} from 'react-redux';
+import {setLocationAC} from '../../app/bll/contentReducer';
+import {Button} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
 
 
 export const Logout = () => {
@@ -12,7 +12,7 @@ export const Logout = () => {
     const navigation = useNavigation();
     const onPressLogout = async () => {
         await deleteUsername();
-        dispatch(setLocationAC({ location: '' }));
+        dispatch(setLocationAC({screen: 'login'}));
     };
     const [user, setUser] = useState<string | null | void>('');
     const getUser = async () => {
@@ -24,7 +24,7 @@ export const Logout = () => {
     return (
         <ScreenWrapper>
             <ImageAndTextWrap>
-                <ImageStyled source={require('../../assets/images/byeCat.png')} />
+                <ImageStyled source={require('../../assets/images/byeCat.png')}/>
                 <TextStyled>
                     <Text>Bye,{'\n'}{user}</Text>
                 </TextStyled>
