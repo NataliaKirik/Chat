@@ -34,8 +34,6 @@ export const LoginScreen: FC = () => {
         } catch (error) {
             console.log(error.message);
         }
-        storeUsername(userGoogleInfo.user.givenName);
-        dispatch(setLocationAC({screen: 'app'}));
     };
 
     return (
