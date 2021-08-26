@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {ButtonPressStyled, ButtonsContainer, GoogleSigninBtn, LoginScreenContainer, Title} from './style';
 import I18n from '../../../i18n';
 import {storeUsername} from '../../../app/asyncStore';
@@ -11,7 +11,6 @@ import {useForm} from 'react-hook-form';
 
 export const LoginScreen: FC = () => {
     const dispatch = useDispatch();
-    const [userGoogleInfo, setUserGoogleInfo] = React.useState<any>({});
     const {control, setFocus, handleSubmit} = useForm({
         defaultValues: {
             name: '',
@@ -19,6 +18,13 @@ export const LoginScreen: FC = () => {
         mode: 'onChange',
     });
 
+    // useEffect(() => {
+    //     for(let qq = 0; qq < 100; ++qq) {
+    //         setTest(test + 1);
+    //         console.log('ue, test=', test);
+    //     }
+    // }, []);
+    // console.log('render, test=', test);
 
     GoogleSignin.configure({
         webClientId: '773868382019-87h2nk10fo8106if8q3evdic2dcau4jt.apps.googleusercontent.com',
@@ -28,8 +34,7 @@ export const LoginScreen: FC = () => {
         try {
             await GoogleSignin.hasPlayServices();
             const userInfo = await GoogleSignin.signIn();
-            setUserGoogleInfo(userInfo);
-            storeUsername(userGoogleInfo.user.givenName);
+            await storeUsername(userInfo.user.givenName!);
             dispatch(setLocationAC({screen: 'app'}));
         } catch (error) {
             console.log(error.message);
